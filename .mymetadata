@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="dellERP"
+  id="myeclipse.1456249538421"
+  context-root="/dellERP"
+  j2ee-spec="6.0"
+  archive="dellERP.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
