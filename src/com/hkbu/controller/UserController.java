@@ -89,8 +89,8 @@ public class UserController
 	public String test()
 	{
 		
-		User user=userService.getById(1l);
-		System.out.println(user);
+		//User user=userService.getById(1l);
+		//System.out.println(user);
 		return "/index";
 	}
 
