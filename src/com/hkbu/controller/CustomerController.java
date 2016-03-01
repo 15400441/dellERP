@@ -11,38 +11,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hkbu.domain.Customer;
-import com.hkbu.domain.User;
-
 import com.hkbu.service.CustomerService;
-import com.hkbu.service.UserService;
+
 
 
 @Controller
-@RequestMapping("/user")
-public class UserController
+@RequestMapping("/customer")
+public class CustomerController
 {
-	@Resource(name="userService")
-	private UserService userService;
 	
 	
 	
 	@Resource(name="customerService")
 	private CustomerService customerService;
 	
-	@RequestMapping("/userLoginUI")
+	@RequestMapping("/customerLoginUI")
 	  public String customerLoginUI()
 	  {
 		 
-		  return "/login";
+		  return "/customerLogin";
 	  }
 	
 	
-	@RequestMapping("/login")
-	public String login(User user, HttpSession session ,String checkcode, Model model)
+	@RequestMapping("/customerLogin")
+	public String login(Customer customer, HttpSession session ,String checkcode, Model model)
 	{
 		//检测用户是否已经登录
-		User loginUser=(User) session.getAttribute("user");
-		if(loginUser!=null)
+		Customer loginCustomer=(Customer) session.getAttribute("customer");
+		if(loginCustomer!=null)
 		{
 			return "/main";
 		}
@@ -51,21 +47,20 @@ public class UserController
 		
 		if(code!=null && code.equalsIgnoreCase(checkcode))
 		{
-		    loginUser=userService.login(user);
-			if(loginUser==null)
+			loginCustomer=customerService.login(customer);
+			if(loginCustomer==null)
 			{
 				model.addAttribute("msg", "用户名或密码错误");
-				return "forward:/user/userLoginUI.do";
+				return "forward:/customer/customerLoginUI.do";
 			}
 			else
 			{  
-				Customer customer=customerService.getCustomerById(loginUser.getCusId());
-				session.setAttribute("user", loginUser);
+				
 				session.setAttribute("customer", customer);
-				User updateUser=new User(loginUser);
-				updateUser.setLastLoginTime(new Date());
+				Customer updateCustomer=new Customer(customer);
+				updateCustomer.setLastLoginTime(new Date());
 			
-				userService.updateUser(updateUser);
+				customerService.update(customer);
 				return "/main";
 			}
 		}
@@ -73,16 +68,16 @@ public class UserController
 		{
 			
 			model.addAttribute("msg", "验证码错误");
-			return "forward:/user/userLoginUI.do";
+			return "forward:/customer/customerLoginUI.do";
 		}
 			
 	}
 	
-	@RequestMapping("/logout")
+	@RequestMapping("/customerLogout")
 	public String logout(HttpSession session)
 	{
 		session.invalidate();
-		return "forward:/user/userLoginUI.do";
+		return "forward:/customer/customerLoginUI.do";
 	}
 	
 	@RequestMapping("/test")

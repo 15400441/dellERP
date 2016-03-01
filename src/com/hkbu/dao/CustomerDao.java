@@ -6,4 +6,6 @@ import com.hkbu.domain.Customer;
 public interface CustomerDao extends BaseDao<Customer>
 {
 
+	Customer getByUserNameAndPwd(Customer customer);
+
 }

@@ -6,5 +6,9 @@ public interface CustomerService
 {
     Customer getCustomerById(Long id);
 
+	void update(Customer customer);
+
+	Customer login(Customer customer);
+
 	
 }

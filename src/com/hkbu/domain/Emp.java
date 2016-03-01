@@ -1,7 +1,5 @@
 package com.hkbu.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Customer entity. @author MyEclipse Persistence Tools
+ * Emp entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "customer", catalog = "dellerp")
-public class Customer implements java.io.Serializable
+@Table(name = "emp", catalog = "dellerp")
+public class Emp implements java.io.Serializable
 {
 
 	// Fields
@@ -23,60 +21,42 @@ public class Customer implements java.io.Serializable
 	private String userName;
 	private String pwd;
 	private String name;
+	private String empNum;
 	private String email;
+	private String salary;
 	private String tele;
 	private Integer gender;
 	private String address;
-	private Date lastLoginTime;
-	private String creditStatus;
+	private Long birthday;
+	private Long depUuid;
+	private Long lastLoginTime;
+	private String lastLoginIp;
+	private Integer loginTimes;
 
 	// Constructors
 
 	/** default constructor */
-	public Customer()
+	public Emp()
 	{
-	}
-
-	/** minimal constructor */
-	public Customer(String userName, String pwd, String name, String email, String tele, Integer gender, String address, Date lastLoginTime)
-	{
-		this.userName = userName;
-		this.pwd = pwd;
-		this.name = name;
-		this.email = email;
-		this.tele = tele;
-		this.gender = gender;
-		this.address = address;
-		this.lastLoginTime = lastLoginTime;
 	}
 
 	/** full constructor */
-	public Customer(String userName, String pwd, String name, String email, String tele, Integer gender, String address, Date lastLoginTime, String creditStatus)
+	public Emp(String userName, String pwd, String name, String empNum, String email, String salary, String tele, Integer gender, String address, Long birthday, Long depUuid, Long lastLoginTime, String lastLoginIp, Integer loginTimes)
 	{
 		this.userName = userName;
 		this.pwd = pwd;
 		this.name = name;
+		this.empNum = empNum;
 		this.email = email;
+		this.salary = salary;
 		this.tele = tele;
 		this.gender = gender;
 		this.address = address;
+		this.birthday = birthday;
+		this.depUuid = depUuid;
 		this.lastLoginTime = lastLoginTime;
-		this.creditStatus = creditStatus;
-	}
-
-	
-
-	public Customer(Customer customer)
-	{
-		this.userName = customer.userName;
-		this.pwd = customer.pwd;
-		this.name = customer.name;
-		this.email = customer.email;
-		this.tele = customer.tele;
-		this.gender = customer.gender;
-		this.address = customer.address;
-		this.lastLoginTime = customer.lastLoginTime;
-		this.creditStatus = customer.creditStatus;
+		this.lastLoginIp = lastLoginIp;
+		this.loginTimes = loginTimes;
 	}
 
 	// Property accessors
@@ -126,6 +106,17 @@ public class Customer implements java.io.Serializable
 		this.name = name;
 	}
 
+	@Column(name = "empNum", nullable = false, length = 20)
+	public String getEmpNum()
+	{
+		return this.empNum;
+	}
+
+	public void setEmpNum(String empNum)
+	{
+		this.empNum = empNum;
+	}
+
 	@Column(name = "email", nullable = false)
 	public String getEmail()
 	{
@@ -135,6 +126,17 @@ public class Customer implements java.io.Serializable
 	public void setEmail(String email)
 	{
 		this.email = email;
+	}
+
+	@Column(name = "salary", nullable = false, length = 10)
+	public String getSalary()
+	{
+		return this.salary;
+	}
+
+	public void setSalary(String salary)
+	{
+		this.salary = salary;
 	}
 
 	@Column(name = "tele", nullable = false, length = 30)
@@ -170,26 +172,59 @@ public class Customer implements java.io.Serializable
 		this.address = address;
 	}
 
+	@Column(name = "birthday", nullable = false)
+	public Long getBirthday()
+	{
+		return this.birthday;
+	}
+
+	public void setBirthday(Long birthday)
+	{
+		this.birthday = birthday;
+	}
+
+	@Column(name = "depUuid", nullable = false)
+	public Long getDepUuid()
+	{
+		return this.depUuid;
+	}
+
+	public void setDepUuid(Long depUuid)
+	{
+		this.depUuid = depUuid;
+	}
+
 	@Column(name = "lastLoginTime", nullable = false)
-	public Date getLastLoginTime()
+	public Long getLastLoginTime()
 	{
 		return this.lastLoginTime;
 	}
 
-	public void setLastLoginTime(Date lastLoginTime)
+	public void setLastLoginTime(Long lastLoginTime)
 	{
 		this.lastLoginTime = lastLoginTime;
 	}
 
-	@Column(name = "creditStatus", length = 20)
-	public String getCreditStatus()
+	@Column(name = "lastLoginIp", nullable = false)
+	public String getLastLoginIp()
 	{
-		return this.creditStatus;
+		return this.lastLoginIp;
 	}
 
-	public void setCreditStatus(String creditStatus)
+	public void setLastLoginIp(String lastLoginIp)
 	{
-		this.creditStatus = creditStatus;
+		this.lastLoginIp = lastLoginIp;
+	}
+
+	@Column(name = "loginTimes", nullable = false)
+	public Integer getLoginTimes()
+	{
+		return this.loginTimes;
+	}
+
+	public void setLoginTimes(Integer loginTimes)
+	{
+		this.loginTimes = loginTimes;
 	}
 
 }

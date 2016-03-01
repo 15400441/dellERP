@@ -7,7 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hkbu.domain.User;
+import com.hkbu.domain.Customer;
+
 
 
 public class LoginInterceptor implements HandlerInterceptor {
@@ -28,7 +29,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		
 		
 		//跳转到登陆页面放行
-		if(url.indexOf("userLoginUI.do")>=0){
+		if(url.indexOf("customerLoginUI.do")>=0){
 			//如果进行登陆提交，放行
 			return true;
 		}
@@ -52,9 +53,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 		//判断session
 		HttpSession session  = request.getSession();
 		//从session中取出用户身份信息
-		User user = (User) session.getAttribute("user");
+		Customer customer = (Customer) session.getAttribute("customer");
 		
-		if(user != null){
+		if(customer != null){
 			//身份存在，放行
 			return true;
 		}
