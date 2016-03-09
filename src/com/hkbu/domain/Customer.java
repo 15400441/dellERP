@@ -1,13 +1,14 @@
 package com.hkbu.domain;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Customer entity. @author MyEclipse Persistence Tools
@@ -38,16 +39,11 @@ public class Customer implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public Customer(String userName, String pwd, String name, String email, String tele, Integer gender, String address, Date lastLoginTime)
+	public Customer(String userName, String pwd, String name)
 	{
 		this.userName = userName;
 		this.pwd = pwd;
 		this.name = name;
-		this.email = email;
-		this.tele = tele;
-		this.gender = gender;
-		this.address = address;
-		this.lastLoginTime = lastLoginTime;
 	}
 
 	/** full constructor */
@@ -64,19 +60,17 @@ public class Customer implements java.io.Serializable
 		this.creditStatus = creditStatus;
 	}
 
-	
-
 	public Customer(Customer customer)
 	{
-		this.userName = customer.userName;
-		this.pwd = customer.pwd;
-		this.name = customer.name;
-		this.email = customer.email;
-		this.tele = customer.tele;
-		this.gender = customer.gender;
-		this.address = customer.address;
-		this.lastLoginTime = customer.lastLoginTime;
-		this.creditStatus = customer.creditStatus;
+		this.userName = customer.getUserName();
+		this.pwd = customer.getPwd();
+		this.name = customer.getName();
+		this.email = customer.getEmail();
+		this.tele = customer.getTele();
+		this.gender = customer.getGender();
+		this.address = customer.getAddress();
+		this.lastLoginTime = customer.getLastLoginTime();
+		this.creditStatus = customer.getCreditStatus();
 	}
 
 	// Property accessors
@@ -126,7 +120,7 @@ public class Customer implements java.io.Serializable
 		this.name = name;
 	}
 
-	@Column(name = "email", nullable = false)
+	@Column(name = "email")
 	public String getEmail()
 	{
 		return this.email;
@@ -137,7 +131,7 @@ public class Customer implements java.io.Serializable
 		this.email = email;
 	}
 
-	@Column(name = "tele", nullable = false, length = 30)
+	@Column(name = "tele", length = 30)
 	public String getTele()
 	{
 		return this.tele;
@@ -148,7 +142,7 @@ public class Customer implements java.io.Serializable
 		this.tele = tele;
 	}
 
-	@Column(name = "gender", nullable = false)
+	@Column(name = "gender")
 	public Integer getGender()
 	{
 		return this.gender;
@@ -159,7 +153,7 @@ public class Customer implements java.io.Serializable
 		this.gender = gender;
 	}
 
-	@Column(name = "address", nullable = false)
+	@Column(name = "address")
 	public String getAddress()
 	{
 		return this.address;
@@ -170,7 +164,8 @@ public class Customer implements java.io.Serializable
 		this.address = address;
 	}
 
-	@Column(name = "lastLoginTime", nullable = false)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "lastLoginTime", length = 0)
 	public Date getLastLoginTime()
 	{
 		return this.lastLoginTime;

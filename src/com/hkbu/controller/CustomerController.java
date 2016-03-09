@@ -1,6 +1,5 @@
 package com.hkbu.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -20,15 +19,12 @@ import com.hkbu.service.CustomerService;
 public class CustomerController
 {
 	
-	
-	
 	@Resource(name="customerService")
 	private CustomerService customerService;
 	
 	@RequestMapping("/customerLoginUI")
 	  public String customerLoginUI()
 	  {
-		 
 		  return "/customerLogin";
 	  }
 	

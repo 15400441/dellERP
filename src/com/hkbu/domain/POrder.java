@@ -21,11 +21,13 @@ public class POrder implements java.io.Serializable
 	// Fields
 
 	private Long uuid;
+	private String orderNum;
 	private Long supplierUuid;
-	private Date date;
+	private Date startTime;
 	private Long totalPrice;
 	private String status;
 	private Long empUuid;
+	private String endTime;
 
 	// Constructors
 
@@ -35,20 +37,23 @@ public class POrder implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public POrder(Long supplierUuid, String status)
+	public POrder(String orderNum, Long supplierUuid, String status)
 	{
+		this.orderNum = orderNum;
 		this.supplierUuid = supplierUuid;
 		this.status = status;
 	}
 
 	/** full constructor */
-	public POrder(Long supplierUuid, Date date, Long totalPrice, String status, Long empUuid)
+	public POrder(String orderNum, Long supplierUuid, Date startTime, Long totalPrice, String status, Long empUuid, String endTime)
 	{
+		this.orderNum = orderNum;
 		this.supplierUuid = supplierUuid;
-		this.date = date;
+		this.startTime = startTime;
 		this.totalPrice = totalPrice;
 		this.status = status;
 		this.empUuid = empUuid;
+		this.endTime = endTime;
 	}
 
 	// Property accessors
@@ -65,6 +70,17 @@ public class POrder implements java.io.Serializable
 		this.uuid = uuid;
 	}
 
+	@Column(name = "orderNum", nullable = false, length = 30)
+	public String getOrderNum()
+	{
+		return this.orderNum;
+	}
+
+	public void setOrderNum(String orderNum)
+	{
+		this.orderNum = orderNum;
+	}
+
 	@Column(name = "supplierUuid", nullable = false)
 	public Long getSupplierUuid()
 	{
@@ -77,15 +93,15 @@ public class POrder implements java.io.Serializable
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "date", length = 0)
-	public Date getDate()
+	@Column(name = "startTime", length = 0)
+	public Date getStartTime()
 	{
-		return this.date;
+		return this.startTime;
 	}
 
-	public void setDate(Date date)
+	public void setStartTime(Date startTime)
 	{
-		this.date = date;
+		this.startTime = startTime;
 	}
 
 	@Column(name = "totalPrice", precision = 10, scale = 0)
@@ -119,6 +135,17 @@ public class POrder implements java.io.Serializable
 	public void setEmpUuid(Long empUuid)
 	{
 		this.empUuid = empUuid;
+	}
+
+	@Column(name = "endTime")
+	public String getEndTime()
+	{
+		return this.endTime;
+	}
+
+	public void setEndTime(String endTime)
+	{
+		this.endTime = endTime;
 	}
 
 }
