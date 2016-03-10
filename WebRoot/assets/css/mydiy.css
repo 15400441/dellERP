@@ -1,0 +1,632 @@
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/* reset */
+a{color:#333;text-decoration:none;}
+a:hover{color:#f80;text-decoration:underline;}
+a:hover em,a:hover b, a:hover i, a:hover span {cursor:pointer;}
+a:hover img {opacity: 0.9}  
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/* layout */
+.col-a, .col-b, .col-ab, .col-c { float:left;}
+.col-a, .col-ab {margin-right:30px;}
+.col-a {width:350px;}
+.col-b {width:370px;}
+.col-c {width:330px;}
+.col-ab {width:750px;} 
+
+
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/** box(box.css 盒子模型) **/
+.box {margin-bottom:30px;}
+.box .hd {height: 20px;}
+.box .hd .mark {height: 20px; font:20px/20px Microsoft Yahei}
+.box .hd .mark, .box .hd .mark a {color: #07d}
+.box .hd .mark-sub {font-size:14px;}
+.box .hd .mark-sub a {float:left; margin-right:12px; color: #999}
+.box .hd .mark a:hover,.box .hd .mark-sub a:hover {color: #f80}
+.box .hd .mark a:hover {text-decoration:none;}
+.box .bd {width: 100%; overflow:hidden;}
+
+.box .hd-big {height: 36px; border-bottom:3px solid #e5e5e5;}
+.box .hd-big .mark {height: 28px; padding-left:10px; font:28px/28px Microsoft Yahei;}
+.box .hd-big .mark-sub {padding-top:10px;}
+
+.box .hd-small {height: 30px; border-bottom:3px solid #e5e5e5;}
+.box .hd-small .mark {height: 20px; padding-left:10px; font: 20px/20px Microsoft Yahei;}
+.box .hd-big .mark-sub {padding-top:6px;}
+
+.box .hd-sub {height: 29px; padding-top:10px; border-bottom:1px solid #e5e5e5;}
+.box .hd-sub .mark {height: 20px; padding-left:10px;}
+
+.box .hd-no-bd{border: none;padding-bottom: 3px;}
+
+.box-sub{padding-top: 5px;}
+.box-sub .hd{line-height: 22px;color:#777;font-size: 14px}
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/** news(news.css 新闻列表) **/
+.news:after{content:"\20";clear:both;height:0;display:block;overflow:hidden;}
+.news {zoom:1}
+.news li { padding-left:10px; height:30px; line-height:30px; overflow:hidden; vertical-align:middle;*zoom:1; background:url(http://www1.pconline.com.cn/2014/channel/images/bg.png) -197px 14px no-repeat; font-family:"Simsun";}
+.news li .sub {color: #e5e5e5;}
+.news li .sub a {color: #999;}
+.news li .sub a:hover {color: #f80;}
+.news li a {font-family:Microsoft YaHei; word-break:break-all;}
+.news li .date {margin-left:10px; float:right; color: #999; font-size:12px; line-height:32px;font-family:"Microsoft YaHei";}
+.news li .sub .sub-s{color:#999;font-family:"Microsoft Yahei"}
+
+.news-no-pad li{padding: 0; background:none;}
+.news-date li{padding: 0; background:none;}
+
+.new-twice-a {margin:0 -15px -9px 0;}
+.new-twice-a li {width: 155px; margin-right:15px; float:left;}
+
+.new-twice-b {margin:0 -15px 0 0;}
+.new-twice-b li {width: 145px; margin-right:15px; float:left;}
+
+.new-align-b li .sub, .new-align-b li a { float:left;margin-right:6px;}
+.new-align-b li .sub a {width:auto; float:none; margin-right:0;}
+.new-align-b li a {width:154px;}
+
+/* 行情 */
+.news-hq {margin-right:-30px;}
+.news-hq li {width: 360px; padding: 0; background:none; margin-right:30px; float:left;}
+
+/* 商家最新促销 */
+.news-promote li .shop-name {width: 98px; float:left; margin-right:10px; _margin-right:7px; overflow:hidden;}
+.news-promote li .shop-name {color: #07d}
+.news-promote li .shop-name:hover {color: #f80} 
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/** pics(pics.css 图片列表) **/
+.pics:after{content:"\20";clear:both;height:0;display:block;overflow:hidden;}
+.pics {zoom:1}
+.pics li{float:left; display:inline;word-break:break-all;}
+.pics li .title {height: 20px; padding-top: 8px; display:block; font: 14px/20px "Microsoft Yahei";overflow:hidden; text-align:center;}
+
+.pics-w80 {padding-left:10px; margin-right:-46px;}
+.pics-w80 li {width: 80px; margin: 20px 46px 0 0;}
+
+.pics-w100 { margin-right:-15px;}
+.pics-w100 li {width: 100px; margin: 20px 15px 0 0;}
+.pics-w100 li .title{font-size: 12px;}
+
+.pics-w120 {padding-left:12px; margin-right:-41px;}
+.pics-w120 li {width: 120px; margin: 20px 41px 0 0;}
+
+.pics-w170 { margin-right:-18px;}
+.pics-w170 li {width: 170px; margin: 20px 18px 0 0;}
+.pics-w170 li.img-w358 {width: 358px}
+
+.pics-w170-a {margin:0 -10px 9px 0;}
+.pics-w170-a li {width: 170px; margin: 20px 10px 0 0;}
+
+.pics-w170-ab {margin:0 -23px 0 0;}
+.pics-w170-ab li {width: 170px; margin: 20px 23px 0 0;}
+
+.pics-w160-b {margin:0 -10px 9px 0;}
+.pics-w160-b li {width: 160px; margin: 20px 10px 0 0;}
+
+.pics-w200 { margin-right:-28px;}
+.pics-w200 li {width: 200px; margin: 20px 27px 0 0;}
+
+.pics-w270 { margin-right:-10px;}
+.pics-w270 li {width: 270px; margin: 20px 10px 0 0;}
+
+/*add by JinC 20150319 16:35*/
+.pics-w330{padding-top: 20px;}
+.pics-w330 li{ width:330px;margin: 0 0 20px 0;}
+/*add end*/
+/** 应用 **/
+.app-pics li {position:relative; zoom:1; overflow:hidden;}
+.app-pics li .entry {width: 100%; height: 20px; position:absolute; bottom: -20px; left: 0; background: #fff; font: 14px/20px Microsoft YaHei; text-align:center; color: #e5e5e5; -webkit-transition:bottom .2s;
+-o-transition:bottom .2s;
+transition:bottom .2s; }
+.app-pics li.hover .entry {bottom: 0}
+.app-pics li .entry a {color: #07d}
+.app-pics li .entry a:hover {color: #f80}
+
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/** .pic-txt(.pic-txt.css 图片列表) **/
+.pic-txt:after{content:"\20";clear:both;height:0;display:block;overflow:hidden;}
+.pic-txt {zoom:1}
+.img-area {float:left; margin-right:15px; position:relative; zoom:1; overflow:hidden;}
+.txt-area {overflow:hidden;zoom:1;} 
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/** drop **/
+.drop {z-index: 10}
+.drop,.drop-hd {position:relative; zoom:1;}
+.drop-hd {padding-right:15px; cursor:pointer; display:inline-block;}
+.drop-hd .tragl {right: 0px; top: 10px;}
+.drop-hd b {font-weight:normal;}
+.drop-bd {width: 275px; position:absolute; left: 0; top: 29px; z-index: 200; box-shadow: 0px 0px 1px rgba(0,0,0,0.1); display:none;}
+.drop-bd .icon-tragl {width: 15px; height: 9px; background: url(http://www1.pconline.com.cn/2014/channel/images/bg.png) -114px -16px no-repeat; position:absolute; left: 34px; top: -8px; z-index: 2; font-size:0; line-height:0; overflow:hidden;}
+.drop-bd .drop-bd-wrap {height: 330px; line-height:30px; border: 1px solid #ddd; background-color:#fff; overflow-x:hidden; overflow-y:auto; position:relative; zoom:1; font-size:14px;}
+.drop-bd-wrap li {padding-left:31px; position:relative; zoom:1; color: #999;}
+.drop-bd-wrap li em {position:absolute; left: 10px; top: 0}
+.drop-bd-wrap li .pvn {width: 63px; _margin-right:-3px; float:left;}
+.drop-bd-wrap li p {overflow:hidden; zoom:1;}
+.drop .drop-bd .drop-bd-wrap li p a {color: #333}
+.drop .drop-bd .drop-bd-wrap li p a:hover {color: #f80}
+.drop-bd-wrap li.stay {padding-left:10px; border-bottom:1px solid #e5e5e5;}
+.drop-bd-wrap li.stay .pvn {width: 84px;}
+
+/* 数据加载中 */
+.drop-bd-wrap .load-text {padding-top:150px;text-align:center;color: #333;}
+
+.drop-list .drop-bd-wrap { height: auto; padding: 6px 15px}
+
+.drop .active .tragl { 
+	-webkit-transform:rotate(180deg);
+	-o-transform:rotate(180deg);
+	transform:rotate(180deg);
+	border-color: #1281dd transparent transparent;
+}
+
+.drop-right .drop-bd,.drop-right .drop-bd .icon-tragl {left: auto}
+.drop-right .drop-bd {right: 0;}
+.drop-right .drop-bd .icon-tragl {right: 22px;}
+
+/* box下的下拉 */
+.box .hd .drop-hd {font: 20px/20px Microsoft Yahei;}
+.box .hd .drop-bd {width: auto}
+.box .hd .drop-bd-wrap {float:left;}
+.box .hd .tragl {top: 9px}
+
+.tab-nav .control .drop-bd-wrap a {color: #333}
+.tab-nav .control .drop-bd-wrap a:hover {color: #f80}
+/*定宽*/
+.tab-bbs .drop-bd{width: 102px;}
+/*Friday, 30-Oct-2015 17:15:23 CST*/ 
+/** rank(rank.css 排行榜) **/
+.rank {padding-top:11px;}
+.rank li {height:30px; line-height:30px; padding:0 0 0 22px; position:relative;zoom:1; overflow:hidden;-ms-word-break:break-all;word-break:break-all; vertical-align:middle;}
+.rank li em,.rank li .sub,.rank li em,.rank li h6{font-size: 14px}
+.rank li em {width: 16px; position:absolute; top: 0; *top:-1px; left: 0; font: italic 16px/31px Arial; color: #999; text-align:center; letter-spacing: -2px}
+.rank li .lab-1 {color: #f33}
+.rank li .lab-2,.rank li .lab-3 {color: #f80}
+.rank li .sub {margin-left:6px; float:right; color: #999; font-size:12px; line-height:32px;}
+.rank li .sub a{color:#999;}
+.rank li .sub a:hover{color: #f80;}
+.rank li h6 {font-weight:normal;} 
+
+.rank-twice-a {width: 165px; margin-right: 10px; float: left;}
+.rank-twice-c {width: 155px; margin-right: 10px; float: left;}
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/** tab(tab.css 标签切换) **/
+.tab {margin-bottom:30px;}
+.tab-wrap {width: 100%; overflow:hidden;zoom:1;}
+.tab .control {height: 36px; border-bottom:3px solid #e5e5e5; zoom:1;}
+.tab .control .item {height: 36px; padding: 0 10px; float:left; font:28px/28px Microsoft Yahei; position:relative; cursor:default;color:#999}
+.tab .control .item a {color: #999}
+.tab .control .current {margin-bottom:-3px; border-bottom: 3px solid #2888de;color: #07d;}
+.tab .control .current a {color: #07d}
+.tab .control .item a:hover {color: #f80;text-decoration:none;}
+
+.tab .control-sub{height: 30px;}
+.tab .control-sub .item{font: 20px/20px Microsoft Yahei;height:20px;}
+.tab .control-sub .current {border: none;}
+
+.col-a .tab-wrap {overflow:visible;}
+
+/** tab-nav **/
+.tab-nav {margin-bottom:30px; zoom:1;}
+.tab-nav .control { padding-left:2px; background-color:#f5f5f5; zoom:1;}
+.tab-nav .control .item { padding: 0 10px; float:left; font:16px/40px Microsoft Yahei; cursor:default;}
+.tab-nav .control .item,.tab-nav .control .item a {color: #999}
+.tab-nav .control .current { border-top: 2px solid #2888de; line-height:38px; background-color:#fff;font-size:20px;}
+.tab-nav .control-sub .current{font-size:16px;}
+.tab-nav .control .current,.tab-nav .control .current a {color: #07d}
+.tab-nav .control .item a:hover {color: #f80;text-decoration:none;}
+
+.tab-nav .control-clean {padding: 0; margin-right:-20px; background:none;}
+.tab-nav .control-clean .item,.tab-nav .control-clean .current {padding: 0; margin-right:20px; line-height:21px;}
+.tab-nav .control-clean .current {border: none;}
+.tab-nav .control-clean .current .tragl-gray-t {border-color: #1281dd transparent transparent; top: 9px}
+
+.col-c .tab-nav .control-clean {margin-right:0;height:29px;border-bottom:1px solid #e5e5e5;}
+.col-c .tab-nav .control-sub{padding-left: 10px;border-bottom:none;}
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/** art-list(art-list.css 排行榜) **/
+.art-list .pic-txt {padding: 20px 0; border-bottom:1px solid #f2f2f2;}
+.art-list .txt-area dt {height: 28px; margin-bottom:8px; font: 18px/28px Microsoft Yahei;}
+.art-list .txt-area .des {height: 48px; line-height:24px; margin-bottom:20px; overflow:hidden; color: #999}
+
+.art-list {overflow:hidden; position:relative; zoom:1;}
+.art-list .blk-img:hover {color: #333; text-decoration:none; background-color:#f9f9f9;}
+.art-list .blk-img:hover dl,.art-list .blk-img:hover div {cursor:pointer;}
+.art-list .blk-img:hover dl dt {color: #f80;}
+
+.art-list .list {overflow:hidden;}
+.art-list .list-wrap {margin-bottom:-1px;}
+
+.art-info {height: 24px; color: #999; overflow:hidden;}
+.art-info em {width: 15px; height: 16px; float:left; margin-right:6px; _margin-right:3px; position:relative; top:4px; font-size:0; line-height:0; overflow:hidden; background: url(http://www1.pconline.com.cn/2014/channel/images/bg.png) 0 0 no-repeat;}
+.art-info .author,.art-info .time,.art-info .cmt {float:left; margin-right:20px;}
+.art-info .author {color: #07d}
+.art-info .author em {background-position:-97px 0;}
+.art-info .time em {background-position:-112px 0;}
+.art-info .cmt em {background-position:-128px 0;}
+.art-info b {font-weight:normal;}
+
+/** 查看更多 **/
+.show-more {height: 40px; margin-top:14px; display:block; background-color:#f5f5f5; text-align:center; cursor:pointer; color: #999}
+.show-more span {display:inline-block; font: 14px/40px Microsoft Yahei}
+.show-more:hover span {color:#f80;}
+
+/** 列表右侧浮动 **/
+.fix-box {width: 330px;}
+.fix {position:fixed; bottom:0; _position:absolute; _top: documentElement.scrollTop - this.parentNode.clientHeight + documentElement.clientHeight}
+.fix-btm {position:relative; zoom:1;}
+.fix-box .last {margin-bottom:0;} 
+
+.article .col-c .box {margin-bottom:11px;}
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/* unit */
+.icon-v,.icon-aro {background: url(http://www1.pconline.com.cn/2014/channel/images/bg_24.png) 0 0 no-repeat;}
+
+/** btn 按钮 **/
+.btn { display:inline-block; background-color:#288bde; font: 14px/30px Microsoft Yahei; color: #fff; border-radius: 3px; text-align:center;}
+.btn:hover {color: #fff; background-color:#0672df; text-decoration:none;}
+
+.btn-aro {height: 30px; line-height:28px; padding: 0 38px 0 20px; position:relative;vertical-align: top;}
+.btn-aro .icon-aro {right: 20px; top: 7px;}
+
+/** 箭头、小三角 **/
+.tragl {width:0;height: 0; line-height:0;overflow:hidden;font-size:0; border-style: dashed;border-width:5px; position:absolute;
+	-webkit-transition:-webkit-transform .2s;
+	transition:transform .2s;
+	-webkit-transform-origin : center 20%;
+	transform-origin : center 20%;
+}
+.tragl-gray-t {border-style: solid dashed dashed dashed; border-color: #bbb transparent transparent;}
+.tragl-blue-t {border-style: solid dashed dashed dashed; border-color: #1281dd transparent transparent;}
+.tragl-white-t {border-style: solid dashed dashed dashed; border-color: #fff transparent transparent;}
+
+/* 透明标题 IE8 gradient滤镜有问题 */
+.title-alpha {width: 100%; height:30px;font: 14px/30px Microsoft Yahei;overflow:hidden;text-align:center;color: #fff; position:absolute; left: 0; bottom: 0; background: rgba(0,0,0,0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#78000000, endColorstr=#78000000);}
+a:hover .title-alpha {text-decoration:underline;}
+:root .title-alpha {filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#00000000, endColorStr=#00000000);}
+
+/* 图标 */
+.icon-v,.icon-aro{position:absolute;line-height:0;font-size:0;overflow:hidden;}
+.icon-v {width:28px; height:28px; margin: -14px 0 0 -14px; left: 50%; top: 50%; background-position:-16px -53px;}
+.icon-aro {width: 15px; height: 15px; background-position:0 -53px;} 
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/* function */
+noscript,.spanclass,.pannel,.pannel-inner,.hidden{display:none;}
+.show,.block{display:block;}
+.mark,.fl,.mark-sub,.fr{display:inline;}
+.mark,.fl{float:left;}
+.mark-sub,.fr{float:right;}
+.fs-14{font-size:14px;} .fs-16{font-size:16px;}
+.clear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}
+.clearfix{*zoom:1}
+.clearfix:after{content:"\20";clear:both;height:0;display:block;overflow:hidden;}
+.mb-30 {margin-bottom:30px;}
+.mb-23 {margin-bottom:23px;}
+.mb-20 {margin-bottom:20px;}
+.mb-9 {margin-bottom:9px;}
+.mb-0 {margin-bottom:0;}
+.blk-img {display:block;position:relative;zoom:1;overflow:hidden;} 
+/*Friday, 30-Oct-2015 17:15:23 CST*/ 
+/* color */
+.fc-red,.fc-red a,.red {color: #f33}
+.fc-blue,.fc-blue a {color: #07d}
+.fc-gray-80,.fc-gray-80 a {color: #999}
+.fc-gray-30,.fc-gray-30 a {color: #aaa}
+.fc-yel,.fc-yel a {color: #ffb}
+
+a.fc-red:hover,.fc-red a:hover,a.fc-red:hover,a.fc-red:hover,a.fc-red:hover,a.fc-red:hover,a:hover .red,a.fc-gray-80:hover,.fc-gray-80 a:hover,a.fc-blue:hover,.fc-blue a:hover,.orange,a.fc-yel:hover,.fc-yel a:hover { color: #f80}
+
+/* background-color */
+.bgc-gray {background-color:#f5f5f5;} 
+/*Friday, 30-Oct-2015 17:15:23 CST*/
+/* other */
+/** IE6 position: absolute 浮动时，也可以顺滑 **/
+*html{_background-image:url(about:blank);_background-attachment:fixed}
+
+/* 公共 */
+.header,.wraper {width:1120px; margin: 0 auto;background-color:#fff; text-align:left;zoom:1;}
+.header-wrap { margin: 0 5px;}
+
+.wraper {padding-top:20px;}
+
+.area {padding: 0 5px;}
+
+/* 网站导航 */
+.navibar-in-wrap {min-width: 1120px;}
+.navibar-in-wrap .navibar {font-family: Microsoft Yahei;}
+.navibar-in-wrap .navibar a:hover {color: #f60}
+.navibar-in-wrap .navibar-wrap {width: 1120px;}
+
+
+/** 设置全局清浮 **/
+.area:after,.box .hd:after,.seo-links:after{content:"\20";clear:both;height:0;display:block;overflow:hidden;}
+.area,.box .hd,.seo-links{zoom:1;}
+
+/* 广告 */
+.ivy {overflow:hidden;zoom:1;}
+.ivy img,.ivy iframe,.ivy object,.ivy embed { display:block; margin-bottom:30px;}
+.ivy-tl1,.ivy-inner {margin:0 5px;}
+.ivy-wrap {margin-right:-5px;}
+
+.ivy-tl1 .ivy-wrap {margin-top:-5px;}
+
+.ivy-tl1 img,.ivy-tl1 embed,.ivy-tl1 object,.ivy-tl1 iframe {margin-top:5px; margin-bottom:0;}
+.ivy-370 img,.ivy-370 embed,.ivy-370 object,.ivy-370 iframe {margin-bottom:28px;}
+.ivy-wrap img,.ivy-wrap iframe,.ivy-wrap object,.ivy-wrap embed {margin-bottom:5px;}
+.dwAd .g-footer{color: #333;}.dwAd .g-footer a{color: #333;}
+
+
+/** 焦点文字区 **/
+.focus-txt .head-line { margin-bottom:11px;}
+
+.focus-txt .news {margin-right:-30px;}
+.focus-txt .news li {width: 178px; margin-right:11px; float:left;}
+
+.focus-txt .new-top {margin-bottom:18px;}
+
+/** 大头条中的标签 **/
+.head-line {height: 20px; margin-bottom:8px; font:bold 18px/20px Microsoft Yahei; overflow:hidden; text-align:center; clear:both;}
+.head-line .sep {margin:0 6px; font-family:Simsun; color:#e5e5e5}
+.head-line .tag {width: 40px; float:left; margin-right:8px; _margin-right:5px; background-color:#1abaf4; position:relative; zoom:1; font-size:12px; font-weight:normal; text-align:center;color: #fff;}
+.head-line .tag .tragl {border-width:5px; border-style: dashed dashed dashed solid; border-color: transparent transparent transparent #1abaf4; right:-9px; top: 5px;}
+.head-line .tag a,.head-line .tag a:hover {color: #fff}
+.head-line .tag-yel {background-color:#ffae00;}
+.head-line .tag-yel .tragl {border-color:transparent transparent transparent #ffae00;}
+.head-line .tag-green {background-color:#61c228;}
+.head-line .tag-green .tragl {border-color:transparent transparent transparent #61c228;}
+.head-line .tag-pink {background-color:#fd5784;}
+.head-line .tag-pink .tragl {border-color:transparent transparent transparent #fd5784;}
+
+/* 热门关键词等 */
+.seo-links {padding: 12px 0 0 10px; margin-bottom:-6px; line-height:30px; font-size:14px;}
+.seo-links a {float:left; margin-right:12px; white-space:nowrap;}
+
+/* 去除hover图片透明 */
+.logo:hover img {opacity: 1}
+
+/*行情块相关*/
+.tab-hq {margin-bottom:30px;}
+.tab-hq .tab-nav {margin-bottom:0;}
+.tab-hq .hq-drop {width: 22px; height: 40px; float:right;}
+.tab-hq .hq-drop .tragl-gray-t {right:7px; top: 18px}
+.tab-hq .hq-drop .drop-bd {left: -34px; top: 39px;}
+
+.tab-hq .tab-wrap .news {padding-top:11px;}
+.tab-hq .ecomm {width: 100%;overflow:hidden;}
+.tab-hq .hq-drop .drop-bd .current {border: none; font-size:14px; line-height:30px; color: #f80;}
+.tab-hq .pannel p {padding: 65px 0 66px; line-height:30px; text-align:center; font-size:14px;}
+
+/* 商家促销 */
+.promote .news {padding-top:11px;}
+.promote .des {padding-top: 86px; line-height:30px; text-align:center; font-size:14px;}
+
+/* 应用类 */
+.app-pics li {position:relative; zoom:1; overflow:hidden;}
+.app-pics li .entry {width: 100%; height: 20px; position:absolute; bottom: -20px; left: 0; background: #fff; font: 14px/20px Microsoft YaHei; text-align:center; color: #e5e5e5; -webkit-transition:bottom .2s;
+-o-transition:bottom .2s;
+transition:bottom .2s; }
+.app-pics li.hover .entry {bottom: 0}
+.app-pics li .entry a {color: #07d}
+.app-pics li .entry a:hover {color: #f80}
+/* 产品图片带价格 */
+.pro-pics li .title{padding-top: 3px;}
+.pro-pics li .price{display: block;width:100%;height: 20px;color:#fb3336;line-height: 22px;text-align: center;overflow: hidden;font-size:14px;}
+/*回顶部*/ 
+.guide{width:45px;margin-left:570px;position:fixed;left:50%;bottom:35px;_position:absolute;_top:expression(documentElement.scrollTop+documentElement.clientHeight - this.clientHeight - 35+'px');display:none;z-index:1;}
+.guide a{height:38px;line-height:16px;margin-top:5px;padding:7px 0 0;display:block;text-align:center;color:#fff}
+.guide a:hover{background-color:#3371be;color:#fff;text-decoration:none}
+.guide a span{padding:0 10px;display:none}
+.guide a:hover span{display:block;background-color:#3371be}
+.guide .top{background:url(http://www1.pconline.com.cn/2014/channel/images/bg.png) 0 -72px}
+
+/* 顶部品牌 Logo */
+.brand {margin:0 -12px 10px 0;position: relative;}
+.brand li {margin:10px 12px 0 0;}
+
+input, select, option, textarea{font-size: 12px;outline: none;}
+.fc-gray-80 .font-red{color:#ff4444}
+.fc-gray-80 .font-red:hover{color:#f60}
+.fc-gray-80 .unlogin{display:none;}
+
+.wraper{padding-top:10px;}
+.rtriangle,.tab-nav-a .current,.info .remove,.info .current .remove,.addition .mold .select,.filter-head .search-bnt,.pic-txt .rig .choice,.poster .userico,.sc-3 .col-ab .topost,.fuc .yellow,.fuc .blue,#sbk .ttriangle,.pick .ltriangle{background-image:url("http://www1.pconline.com.cn/2014/channel/mydiy/images/mydiy_bg.png");background-repeat:no-repeat;}
+
+/* area-nav*/
+.tab-nav-a-head{font-size:20px;line-height:40px;color:#07d;}
+.tab-nav-a .control{padding:0 0 10px 0;background:none;line-height:28px;text-align:center;margin-right:-10px;position:relative;}
+.tab-nav-a .control span{width:98px;float:left;margin:10px 10px 0 0;background-color:#f5f5f5;border:2px solid #f5f5f5;cursor:pointer;position:relative;}
+.tab-nav-a .control span:hover{border-color:#288bde;background-color:#fff;}
+.tab-nav-a .control .current{border-color:#288bde;background-position: -6px -65px;background-color:#fff;}
+
+.area-sc1{margin-bottom:30px;}
+.area-sc1 .col-a{width:455px;height:1253px;border:2px #288bde solid;color:#999;position:relative;margin-right:10px;}
+.area-sc1 .col-a .rtriangle{width:6px;height:11px;position:absolute;right:-8px;top:16px;background-position:-286px 0;display:none;}
+.area-sc1 .col-a .current .rtriangle{display:block;}
+.area-sc1 .config-list{background-color:#288bde;font-size:20px;line-height:40px;text-align:center;color:#fff;}
+.area-sc1 .columns{width:455px;height:33px;font-size:14px;line-height:33px;background-color:#f5f5f5;text-align:center;}
+.area-sc1 .columns span{float:left;}
+.area-sc1 .columns .column1{width:79px;padding-left:10px}
+.area-sc1 .columns .column2{width:179px;}
+.area-sc1 .columns .column3{width:43px;}
+.area-sc1 .columns .column4{width:69px;}
+.area-sc1 .columns .column5{width:65px;}
+.area-sc1 .info{position:relative;color:#999;}
+.area-sc1 .info th{font-weight:normal;}
+.area-sc1 .info tr{cursor:pointer;}
+.area-sc1 .info .current{background-color:#e9f3fc;}
+.area-sc1 .info tbody td{height:40px;line-height:40px;vertical-align: middle;text-align: center;border-bottom: 1px solid #f2f2f2;}
+.info input,.info select,.info option,.info textarea{border: none;background: none;}
+.area-sc1 .info .remove{width:20px;height:20px;line-height:0;overflow: hidden;display:block;text-align:center;vertical-align:middle;background-position:-238px 0;visibility:hidden;margin:0 auto;}
+.area-sc1 .info .current .remove{background-position:-262px 0;}
+.area-sc1 .info tbody .loccupy,.area-sc1 .info tbody .roccupy{border:none;position:relative;}
+.info textarea{position: relative;width: 100%;height: 20px;vertical-align: middle;padding: 0;line-height:20px;overflow: hidden;text-align: center;text-indent: 0;resize:none;background:url("http://www1.pconline.com.cn/2014/channel/mydiy/images/textarea.png") bottom right no-repeat;}
+.info .price{color:#ff4444;}
+.info .focus{background-color:#fff;border:1px solid #e5e5e5;color:#333;}
+.area-sc1 .info tfoot tr{cursor:default;}
+.area-sc1 .info tfoot tr:hover{background-color:#fff;}
+.info tfoot td{border: none;height:53px;padding: 0 10px;border-bottom:none;text-align: right;font-size: 12px;}
+.red{color: #fd4344;}
+.info .final{color: #fd4344;font-size: 26px;font-weight: 700;}
+.addition{padding:20px 0 28px;border-bottom:1px solid #f5f5f5;border-top:1px solid #f5f5f5;overflow:hidden;zoom: 1;}
+.addition .mold{height:70px;}
+.addition dl{overflow:hidden;position: relative;zoom: 1;}
+.addition dt,.addition dd{float:left;}
+.addition dt{width: 75px;line-height: 30px;font-size:14px;text-align: right;color: #999;}
+.addition dd{width:315px;vertical-align:middle;}
+.addition .mold span{display:block;overflow:hidden;position: relative;}
+.addition .mold dt{height: 61px;line-height: 26px;}
+.addition .mold i{display: inline-block;float: left;width:96px;height:26px;border: 2px solid #f5f5f5;text-align: center;margin: 0 5px 5px 0;cursor: pointer;background:#f5f5f5;color:#333;}
+.addition .mold .select{border-color:#288bde;background-position:-116px -66px;background-color:#fff;color: #288bde;}
+.addition .title{margin:10px 0 15px;}
+.addition input{height: 18px;line-height: 18px;border: 1px solid #e5e5e5;padding:5px 0;}
+.addition .title input{width:315px;}
+.addition .des textarea{width:300px;height:128px;border: 1px solid #e5e5e5;padding:5px;background: none;resize:none;vertical-align:middle;}
+.addition .veri{margin-top:15px;}
+.addition .veri .yzm{width:98px;}
+.addition .veri .yzm,.addition .veri .yzmpic,.addition .veri a{float: left;margin-right:5px;}
+.addition .veri a{margin-right:0;}
+.addition .veri a{font-size:14px;color:#999;line-height:30px;}
+.addition .veri a:hover{color:#f60;}
+
+.fuc{padding:20px 0 0 75px;overflow:hidden;zoom:1;}
+.fuc input{float: left;width:150px;height:30px;border: none;border-radius:4px;color:#fff;outline: none;-webkit-appearance: none;-moz-appearance: none;appearance: none;zoom:1;}
+.fuc .yellow{background-position:0 -32px;margin-right:10px;background-color:#ffae00;}
+.fuc .blue{background-position:-160px -32px;background-color:#288bde;}
+
+.area-sc1 .col-b{width:636px;height:1253px;border:2px solid #e5e5e5;overflow:hidden;}
+.area-sc1 .col-b .contentlist{display:none;}
+.filter-head{height:40px;line-height:40px;padding: 0 12px;color: #038;font-size: 16px;background-color:#f5f5f5;}
+.filter-head .condition{float:left;color:#288bde;}
+.filter-head .search{float:right;width:221px;height:26px;margin-top:7px;overflow:hidden;line-height:13px;position:relative;}
+.filter-head .search .text{width:150px;height:13px;padding:5px 10px;background-color:#fff;vertical-align:middle;color:#999;border:1px solid #e5e5e5;border-right:none;border-radius:4px;border-top-right-radius:0;border-bottom-right-radius:0;-webkit-border-top-right-radius:0;-webkit-border-bottom-right-radius:0;-moz-border-radius-topright:0;-moz-border-radius-bottomright:0;float:left;}
+.filter-head .search-bnt{width:50px;height:25px;background-color: #ffad00;background-position: 0 0;float:left;border:none;outline: none;-webkit-appearance: none;-moz-appearance: none;appearance: none;zoom:1;}
+.filter-body{padding:9px 12px;}
+.filter .brand{line-height:24px;height: 28px;color: #777;margin-bottom: 3px;width:100%;}
+.activeBrand{z-index:10;}
+.filter .brand-wrap{position:relative;}
+.brand-classify{float:left;width:83px;text-align: right;}
+.filter .brand .more{width:529px;height:28px;position:absolute;right:0;top:-5px;}
+.brand-detail{width:480px;height:26px;float: left;margin-right:8px;_margin-right:5px;position:relative;padding-top:5px;overflow:hidden;background-color:#fff;border:1px solid #fff;}
+.filter .brand-detail .current{background: #f9aa00;color: #fff;}
+.filter .more a{line-height:32px;cursor:default;}
+.filter .brand-detail .brand-all a{display: inline-block;padding: 0 5px;height: 22px;line-height: 22px;position:relative;overflow:hidden;margin-left:5px;*margin-bottom:5px;*display:inline;*zoom:1;}
+.brand-wrap .more a:hover{color:#288bde;text-decoration:none;}
+.filter .brand-detail .current:hover{color:#fff;}
+.area-sc1 .col-b .rtriangle{width:13px;height:14px;position:absolute;right:-13px;top:8px;background-position:-302px -10px;}
+.brand-wrap .active .first-line-bg{position: absolute;left:0;top:0;width:100%;height:33px;background-color:#f9f9f9;}
+.brand-wrap .active{height:auto;overflow:visible;border:1px solid #e5e5e5;}
+.productList-head{width:100%;height:40px;padding: 0 5px;line-height:40px;background: #f5f5f5;overflow:hidden;}
+.productList-head .submark{float:right;}
+.productList-head .mark{float: left;padding-left: 10px;font-size:16px;color: #288bde;}
+.productList-head .mark em{color:#999;}
+.type{height:40px;width:280px;display:block;}
+.type a{display:inline-block;height:40px;text-align:center;line-height:40px;padding:0 10px;color:#999;*display:inline;*zoom:1;}
+.type a.selected{height:38px;_height:39px;line-height:39px;border-top:2px solid #288bde;color:#288bde;background-color:#fff;}
+.type a.selected:hover{text-decoration:none;cursor:default;font-weight:700}
+.type a.last{border-right:none}
+.area-sc1 .pic-txt-list{overflow:hidden;padding:0 12px;}
+.area-sc1 .pic-txt-list .load{text-align:center;font-size:20px;}
+.area-sc1 .pic-txt-list .loading{margin-top:100px;}
+.area-sc1 .pic-txt{border-bottom: 1px solid #f5f5f5;padding:21px 0 16px;overflow:hidden;position: relative;zoom: 1;vertical-align:middle;}
+.area-sc1 .pic-txt .img{width:100px;float: left;margin-right:15px;height: 85px;position: relative;}
+.area-sc1 .pic-txt .img img{width:100px;}
+.area-sc1 .pic-txt .mid{width: 335px;float: left;}
+.area-sc1 .pic-txt .mid dt{font-size: 14px;display: block;padding-bottom: 5px;height: 22px;line-height: 22px;overflow: hidden;}
+.area-sc1 .pic-txt .mid dd{overflow:hidden;line-height:23px;}
+.area-sc1 .pic-txt .mid .h46{height:46px;}
+.area-sc1 .pic-txt .mid dd i{width: 166px;overflow: hidden;float: left;display: inline-block;color: #333;white-space:nowrap;text-overflow: ellipsis;overflow: hidden;}
+.area-sc1 .pic-txt .mid dd em{color:#999;}
+.area-sc1 .pic-txt .mid .mcs{color:#288bde;}
+.area-sc1 .pic-txt .mid .mcs:hover{color:#f60;}
+.area-sc1 .pic-txt .rig{width:114px;float: right;height: 85px;}
+.area-sc1 .pic-txt .rig .price{display: block;height: 34px;line-height: 34px;padding-top: 12px;font-size: 22px;text-align: center;font-weight: normal;color:#ff4444;}
+.area-sc1 .pic-txt .rig .choice{display:block;width: 90px;height:30px;line-height:30px;background-position:-143px 0;text-align:center;color:#666;margin:0 auto;}
+.area-sc1 .pic-txt .rig .choosed,.area-sc1 .pic-txt .rig .choice:hover{background-position:-51px 0;color:#fff;text-decoration:none;}
+.pconline_page{padding:22px 0 20px;height: 28px;clear: both;text-align:right;font-size: 14px;line-height:15px;}
+.pconline_page span,.pconline_page a{margin:0 2px;padding:7px 10px 7px 10px;color:#999;background:#f5f5f5;display:inline-block}
+.pconline_page .selected{background:#288bde;text-decoration:none;display:inline-block;color:#fff;}
+.pconline_page a:hover{color:#fff;text-decoration:underline;background-color:#288bde;text-decoration:none}
+.pconline_page .prev,.pconline_page .next{background:url("http://www1.pconline.com.cn/2014/channel/mydiy/images/page.png") no-repeat #f5f5f5;border:none;font-size:14px}
+.pconline_page .prev{background-position:0 0;padding:7px 10px 7px 20px}
+.pconline_page .next{background-position:0 -29px;padding:7px 20px 7px 10px}
+.pconline_page a:hover.prev{background-position:0 -58px}
+.pconline_page a:hover.next{background-position:0 -87px;}
+
+/* sc-2*/
+.sc-2 .box{margin-bottom:23px;}
+.sc-2 .box-diy{margin:18px 0 0 10px;font-size:14px;}
+.sc-2 .rank-best-sales{margin-bottom:0;}
+.sc-2 .rank-best-sales .hd{padding-top:20px;}
+.tab-diyer-mall{margin-bottom:0;}
+.tab-diyer-mall .control-clean{height:29px;padding-left:10px;padding-top:20px;margin-right:0;border-bottom:1px solid #e5e5e5;}
+.box-diy .hd .mark{height:25px;line-height:24px;font-weight:bold;}
+.box-diy .hd .circle{width:24px;line-height:25px;margin-right:6px;_margin-right:3px;background:url(http://www1.pconline.com.cn/2014/index/images/bg.png) no-repeat -207px -62px;float:left;text-align:center;position:relative;font-size:14px;color:#07d;}
+.box-diy .hd .mark .tit{font-size:16px;color:#333;}
+.box-diy .art-info .author{color:#999;margin-right:0;}
+.diy-row{height:35px;line-height:35px;overflow:hidden;word-break:break-all;}
+.box-diy .bd{border-bottom:1px solid #e5e5e5;margin:14px 0 6px 0;padding-bottom:10px;}
+.box-diy .bd i, .box-diy .bd .product-cat, .box-diy .bd .product-name, .box-diy .bd .product-price, .icon-cpu, .icon-mb, .icon-mmr, .icon-gc, .icon-hdd, .icon-ssd, .icon-case, .icon-power, .icon-crt, .icon-mouse{display:block;float:left;}
+.box-diy .bd .product-cat{width:100px;color:#999;}
+.box-diy .bd .product-name{width:180px;}
+.box-diy .bd .product-price{float:right;color:#f33;}
+.box-diy .ft .total-price{text-align:right;color:#999;}
+.box-diy .ft .price{font-size:20px;color:#f33;}
+.box-diy .ft .buy{margin-left:20px;color:#07d;}
+.icon-cpu, .icon-mb, .icon-mmr, .icon-gc, .icon-hdd, .icon-ssd, .icon-case, .icon-power, .icon-crt, .icon-mouse{width:28px;height:25px;margin:4px 10px 0 0;_margin-right:7px;background-image:url(http://www1.pconline.com.cn/2014/channel/diy/images/diy_bg.png);background-repeat:no-repeat;}
+.icon-cpu{background-position:0 0;}
+.icon-mb{background-position:0 -25px;}
+.icon-mmr{background-position:0 -50px;}
+.icon-gc{background-position:0 -75px;}
+.icon-hdd{background-position:0 -100px;}
+.icon-ssd{background-position:0 -125px;}
+.icon-case{background-position:0 -175px;}
+.icon-power{background-position:0 -200px;}
+.icon-crt{background-position:0 -150px;}
+.icon-mouse{background-position:0 -225px;}
+.rank-best-sales .pic-txt{margin-top:20px;display:block;position:relative;cursor:pointer;}
+.rank-best-sales .pic-txt:hover{text-decoration:none;}
+.rank-best-sales .pic-txt:hover p{color:#333;}
+.rank-best-sales .pic-txt .img-area{margin-right:10px;_margin-right:7px;display:block;}
+.rank-best-sales .pic-txt .txt-area{font-size:14px;}
+.rank-best-sales .pic-txt .txt-area dt{padding-top:24px;}
+.rank-best-sales .price{color:#f33;}
+.rank-best-sales .pic-txt .txt-area p{line-height:30px;}
+.rank-best-sales .pic-txt .txt-area p span{color:#999;}
+.rank-best-sales .txt-area-extra{display:none;}
+.rank-best-sales .switch .txt-area-default{display:none;}
+.rank-best-sales .switch .txt-area-extra{display:block;}
+.icon-r1, .icon-r2, .icon-r3, .icon-r4{width:27px;height:27px;line-height:18px;position:absolute;top:0;left:0;background-image:url(http://www1.pconline.com.cn/2014/channel/diy/images/diy_bg.png);background-repeat:no-repeat;color:#fff;}
+.icon-r1{background-position:-29px 0;}
+.icon-r2{background-position:-29px -28px;}
+.icon-r3{background-position:-29px -56px;}
+.icon-r4{background-position:-29px -84px;}
+
+.col-c .clients{margin:20px 0 0;width:330px;height: 115px;overflow: hidden;}
+.sc-3 .pic-txt{display:block;background:#f1f1f1;margin:20px 0;padding:10px;}
+.sc-3 .pic-txt:hover{text-decoration:none;}
+.sc-3 .pic-txt .blk-img{float:left;margin-right:10px;_margin-right:7px;}
+.sc-3 .txt-area{color:#333;cursor:pointer;}
+.sc-3 .txt-area dt{height:33px;line-height:33px;font-size:20px;}
+.sc-3 .txt-area dd{line-height:20px;color:#999;}
+.sc-3 .col-ab dl{height:40px;line-height:40px;border-bottom:1px solid #e5e5e5;overflow:hidden;}
+.sc-3 .col-ab dt,.sc-3 .col-ab dd{float:left;white-space:nowrap;text-overflow:ellipsis; }
+.sc-3 .col-ab dt{width:542px;padding-left:10px;font-size:14px;overflow:hidden;}
+.sc-3 .col-ab .poster{width:106px;font-size:12px;padding:12px 14px 0 0;overflow:hidden;}
+.sc-3 .col-ab .poster .userico{width:86px;height: 16px;line-height: 16px;padding-left: 20px;background-position:-295px -76px;float:left;color:#288bde;overflow:hidden;}
+.sc-3 .col-ab .topost{display:block;width:90px;height:30px;line-height:30px;background-position:-51px 0;color:#fff;text-align:center;margin:10px 0 0 660px;}
+.sc-3 .col-ab .topost:hover{text-decoration:none;}
+.sc-3 .col-ab .time{width:68px;color:#999;}
+
+/* hover 大图*/
+.pick{position: absolute;width:260px;height:190px;padding:20px 30px;background: #fff;display: none;text-align: center;border: 1px solid #dddddd;}
+.pick .ltriangle{width:8px;height:15px;position:absolute;left:-8px;top:10px;background-position:-283px -16px;}
+.pick img{width:auto;height:100%;}
+
+/* 数字键盘 */
+#sbk{border: 1px solid #e5e5e5;z-index: 100;width: 96px;padding:1px;line-height: 24px;position: absolute;display: block;background: #fff;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;display: none;}
+#sbk a{display: inline-block;width:30px;height:30px;line-height:30px;float: left;background: #f4f4f4;color: #999;margin:1px;}
+#sbk a:hover{background:#288bde;color: #fff;text-decoration:none;}
+#sbk .ttriangle{width:13px;height:7px;top:-7px;left:43px;background-position:-297px 0;position: absolute;}
+
+/* sc-4*/
+.sc-4{overflow: hidden;}
