@@ -51,7 +51,7 @@
 
 	<error-page>
 		<error-code>404</error-code>
-		<location>/code404.do</location>
+		<location>/ui/code404.do</location>
 	</error-page>
 
 	<welcome-file-list>

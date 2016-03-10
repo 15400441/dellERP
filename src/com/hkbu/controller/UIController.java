@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping("/ui")
 public class UIController
 {
 	
@@ -19,6 +20,8 @@ public class UIController
 	{
 		return "/404";
 	}
+	
+	
 	
 	
 

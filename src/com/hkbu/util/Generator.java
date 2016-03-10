@@ -178,7 +178,7 @@ public class Generator
 		if (f.exists())
 		{
 			System.out.println(b+"DaoImpl already existed");
-			return;
+			//return;
 		}
 
 		f.createNewFile();
@@ -193,7 +193,7 @@ public class Generator
 				+ "import com.hkbu.base.BaseDao;" + "\r\n" 
 				+ "import com.hkbu.base.BaseDaoImpl;" + "\r\n" 
 		        + "import com.hkbu.base.BaseQueryModel;" + "\r\n" + "\r\n"
-				+"@Repository(value=\" "+s+"Dao\")"+ "\r\n"
+				+"@Repository(value=\""+s+"Dao\")"+ "\r\n"
 				+ "public class " + b + "DaoImpl extends BaseDaoImpl<" + b + "> implements " + b + "Dao"+"\r\n"
 				+"{" + "\r\n" + "\r\n" 
 				+ "	public void doQbc(DetachedCriteria dc,BaseQueryModel qm)"+"\r\n"

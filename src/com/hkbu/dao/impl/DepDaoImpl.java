@@ -9,7 +9,7 @@ import com.hkbu.base.BaseDao;
 import com.hkbu.base.BaseDaoImpl;
 import com.hkbu.base.BaseQueryModel;
 
-@Repository(value=" depDao")
+@Repository(value="depDao")
 public class DepDaoImpl extends BaseDaoImpl<Dep> implements DepDao
 {
 

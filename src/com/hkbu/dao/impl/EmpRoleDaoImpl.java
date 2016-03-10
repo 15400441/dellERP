@@ -9,7 +9,7 @@ import com.hkbu.base.BaseDao;
 import com.hkbu.base.BaseDaoImpl;
 import com.hkbu.base.BaseQueryModel;
 
-@Repository(value=" empRoleDao")
+@Repository(value="empRoleDao")
 public class EmpRoleDaoImpl extends BaseDaoImpl<EmpRole> implements EmpRoleDao
 {
 

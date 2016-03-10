@@ -9,7 +9,7 @@ import com.hkbu.base.BaseDao;
 import com.hkbu.base.BaseDaoImpl;
 import com.hkbu.base.BaseQueryModel;
 
-@Repository(value=" supplierDao")
+@Repository(value="supplierDao")
 public class SupplierDaoImpl extends BaseDaoImpl<Supplier> implements SupplierDao
 {
 
