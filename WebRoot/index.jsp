@@ -1,3 +1,3 @@
 <script>
-top.document.location="${pageContext.request.contextPath}/ui/customerLoginUI.do";
+top.document.location="${pageContext.request.contextPath}/customer/main.do";
 </script>

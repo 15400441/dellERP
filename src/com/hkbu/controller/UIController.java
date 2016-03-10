@@ -21,11 +21,7 @@ public class UIController
 		return "/404";
 	}
 	
-	@RequestMapping("/customerLoginUI")
-	public String customerLoginUI()
-	{
-		return "/customerLogin";
-	}
+	
 	
 	
 

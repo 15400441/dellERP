@@ -22,11 +22,13 @@ public class CustomerController
 	@Resource(name="customerService")
 	private CustomerService customerService;
 	
-	@RequestMapping("/customerLoginUI")
+	@RequestMapping("/main")
 	  public String customerLoginUI()
 	  {
-		  return "/customerLogin";
+		  return "/main";
 	  }
+	
+	
 	
 	
 	@RequestMapping("/customerLogin")
