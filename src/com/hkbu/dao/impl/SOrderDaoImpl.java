@@ -9,7 +9,7 @@ import com.hkbu.base.BaseDao;
 import com.hkbu.base.BaseDaoImpl;
 import com.hkbu.base.BaseQueryModel;
 
-@Repository(value=" sOrderDao")
+@Repository(value="sOrderDao")
 public class SOrderDaoImpl extends BaseDaoImpl<SOrder> implements SOrderDao
 {
 

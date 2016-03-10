@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping("/ui")
 public class UIController
 {
 	
@@ -18,6 +19,12 @@ public class UIController
 	public String code404()
 	{
 		return "/404";
+	}
+	
+	@RequestMapping("/customerLoginUI")
+	public String customerLoginUI()
+	{
+		return "/customerLogin";
 	}
 	
 	

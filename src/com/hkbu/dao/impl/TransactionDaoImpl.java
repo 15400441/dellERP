@@ -9,7 +9,7 @@ import com.hkbu.base.BaseDao;
 import com.hkbu.base.BaseDaoImpl;
 import com.hkbu.base.BaseQueryModel;
 
-@Repository(value=" transactionDao")
+@Repository(value="transactionDao")
 public class TransactionDaoImpl extends BaseDaoImpl<Transaction> implements TransactionDao
 {
 

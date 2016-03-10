@@ -9,7 +9,7 @@ import com.hkbu.base.BaseDao;
 import com.hkbu.base.BaseDaoImpl;
 import com.hkbu.base.BaseQueryModel;
 
-@Repository(value=" componentsDao")
+@Repository(value="componentsDao")
 public class ComponentsDaoImpl extends BaseDaoImpl<Components> implements ComponentsDao
 {
 

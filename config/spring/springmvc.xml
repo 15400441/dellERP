@@ -19,10 +19,8 @@
 	<context:component-scan base-package="com.hkbu.controller"></context:component-scan>
 
 	<!-- 静态资源解析 包括 ：js、css、img、.. -->
-	<mvc:resources location="/js/" mapping="/js/**" />
-	<mvc:resources location="/images/" mapping="/images/**" />
-	<mvc:resources location="/css/" mapping="/css/**" />
-	<mvc:resources location="/ligerUILib/" mapping="/ligerUILib/**" />
+	<mvc:resources location="/assets/" mapping="/assets/**" />
+	
 
 
 
