@@ -1,11 +1,14 @@
 package com.hkbu.domain;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Emp entity. @author MyEclipse Persistence Tools
@@ -29,7 +32,7 @@ public class Emp implements java.io.Serializable
 	private String address;
 	private Long birthday;
 	private Long depUuid;
-	private Long lastLoginTime;
+	private Date lastLoginTime;
 	private String lastLoginIp;
 	private Integer loginTimes;
 
@@ -40,8 +43,15 @@ public class Emp implements java.io.Serializable
 	{
 	}
 
+	/** minimal constructor */
+	public Emp(String userName, String pwd)
+	{
+		this.userName = userName;
+		this.pwd = pwd;
+	}
+
 	/** full constructor */
-	public Emp(String userName, String pwd, String name, String empNum, String email, String salary, String tele, Integer gender, String address, Long birthday, Long depUuid, Long lastLoginTime, String lastLoginIp, Integer loginTimes)
+	public Emp(String userName, String pwd, String name, String empNum, String email, String salary, String tele, Integer gender, String address, Long birthday, Long depUuid, Date lastLoginTime, String lastLoginIp, Integer loginTimes)
 	{
 		this.userName = userName;
 		this.pwd = pwd;
@@ -57,6 +67,25 @@ public class Emp implements java.io.Serializable
 		this.lastLoginTime = lastLoginTime;
 		this.lastLoginIp = lastLoginIp;
 		this.loginTimes = loginTimes;
+	}
+	
+	public Emp(Emp emp)
+	{
+		this .uuid=emp.getUuid();
+		this.userName=emp.getUserName();
+		this.pwd = emp.getPwd();
+		this.name = emp.getName();
+		this.empNum = emp.getEmpNum();
+		this.email = emp .getEmail();
+		this.salary = emp.getSalary();
+		this.tele = emp.getTele();
+		this.gender = emp.getGender();
+		this.address = emp.getAddress();
+		this.birthday = emp.getBirthday();
+		this.depUuid = emp.getDepUuid();
+		this.lastLoginTime = emp.getLastLoginTime();
+		this.lastLoginIp = emp.getLastLoginIp();
+		this.loginTimes = emp. getLoginTimes();
 	}
 
 	// Property accessors
@@ -95,7 +124,7 @@ public class Emp implements java.io.Serializable
 		this.pwd = pwd;
 	}
 
-	@Column(name = "name", nullable = false, length = 30)
+	@Column(name = "name", length = 30)
 	public String getName()
 	{
 		return this.name;
@@ -106,7 +135,7 @@ public class Emp implements java.io.Serializable
 		this.name = name;
 	}
 
-	@Column(name = "empNum", nullable = false, length = 20)
+	@Column(name = "empNum", length = 20)
 	public String getEmpNum()
 	{
 		return this.empNum;
@@ -117,7 +146,7 @@ public class Emp implements java.io.Serializable
 		this.empNum = empNum;
 	}
 
-	@Column(name = "email", nullable = false)
+	@Column(name = "email")
 	public String getEmail()
 	{
 		return this.email;
@@ -128,7 +157,7 @@ public class Emp implements java.io.Serializable
 		this.email = email;
 	}
 
-	@Column(name = "salary", nullable = false, length = 10)
+	@Column(name = "salary", length = 10)
 	public String getSalary()
 	{
 		return this.salary;
@@ -139,7 +168,7 @@ public class Emp implements java.io.Serializable
 		this.salary = salary;
 	}
 
-	@Column(name = "tele", nullable = false, length = 30)
+	@Column(name = "tele", length = 30)
 	public String getTele()
 	{
 		return this.tele;
@@ -150,7 +179,7 @@ public class Emp implements java.io.Serializable
 		this.tele = tele;
 	}
 
-	@Column(name = "gender", nullable = false)
+	@Column(name = "gender")
 	public Integer getGender()
 	{
 		return this.gender;
@@ -161,7 +190,7 @@ public class Emp implements java.io.Serializable
 		this.gender = gender;
 	}
 
-	@Column(name = "address", nullable = false)
+	@Column(name = "address")
 	public String getAddress()
 	{
 		return this.address;
@@ -172,7 +201,7 @@ public class Emp implements java.io.Serializable
 		this.address = address;
 	}
 
-	@Column(name = "birthday", nullable = false)
+	@Column(name = "birthday")
 	public Long getBirthday()
 	{
 		return this.birthday;
@@ -183,7 +212,7 @@ public class Emp implements java.io.Serializable
 		this.birthday = birthday;
 	}
 
-	@Column(name = "depUuid", nullable = false)
+	@Column(name = "depUuid")
 	public Long getDepUuid()
 	{
 		return this.depUuid;
@@ -194,18 +223,19 @@ public class Emp implements java.io.Serializable
 		this.depUuid = depUuid;
 	}
 
-	@Column(name = "lastLoginTime", nullable = false)
-	public Long getLastLoginTime()
+	@Temporal(TemporalType.DATE)
+	@Column(name = "lastLoginTime", length = 0)
+	public Date getLastLoginTime()
 	{
 		return this.lastLoginTime;
 	}
 
-	public void setLastLoginTime(Long lastLoginTime)
+	public void setLastLoginTime(Date lastLoginTime)
 	{
 		this.lastLoginTime = lastLoginTime;
 	}
 
-	@Column(name = "lastLoginIp", nullable = false)
+	@Column(name = "lastLoginIp")
 	public String getLastLoginIp()
 	{
 		return this.lastLoginIp;
@@ -216,7 +246,7 @@ public class Emp implements java.io.Serializable
 		this.lastLoginIp = lastLoginIp;
 	}
 
-	@Column(name = "loginTimes", nullable = false)
+	@Column(name = "loginTimes")
 	public Integer getLoginTimes()
 	{
 		return this.loginTimes;

@@ -21,7 +21,11 @@ public class UIController
 		return "/404";
 	}
 	
-	
+	@RequestMapping("/empLoginUI")
+	public String empLogin()
+	{
+		return "/admin/login";
+	}
 	
 	
 

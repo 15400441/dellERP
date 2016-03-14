@@ -1,5 +1,7 @@
 package com.hkbu.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +17,15 @@ public class EmpDaoImpl extends BaseDaoImpl<Emp> implements EmpDao
 
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm)
 	{
-		// TODO 添加自定义查询条件
+		
+	}
+
+	@Override
+	public Emp findByUsernameAndPwd(String userName, String pwd)
+	{
+		String hql="from Emp where userName=? and pwd=?";
+		List<Emp> emps=getHibernateTemplate().find(hql,userName,pwd);
+		return emps.size()!=0 ?emps.get(0):null;
 	}
 
 }

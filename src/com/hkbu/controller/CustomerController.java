@@ -25,7 +25,7 @@ public class CustomerController
 	@RequestMapping("/main")
 	  public String customerLoginUI()
 	  {
-		  return "/main";
+		  return "/main1";
 	  }
 	
 	
