@@ -12,7 +12,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import  com.hkbu.exception.AppException;
 
-public abstract class BaseDaoImpl<T> extends HibernateDaoSupport{
+public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>{
 	
 	@Resource(name = "sessionFactory")  
 	private void setHibernateSessionFactory(SessionFactory sessionFactory) {  

@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="${pageContext.request.contextPath}/sOrder/orderList.do?status=new order">
+                            <a href="${pageContext.request.contextPath}/sOrder/orderList.do?status=0">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -65,25 +65,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <h2>Order Detail</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
-                                <thead>
+                                 <thead>
                                     <tr>
-                                        <th>Order num</th>
-                                        <th>Start Time</th>
+                                        <th>Components name</th>
+                                        <th>amount</th>                
                                         <th>Total price</th>
-                                        <th>Customer id</th>
-                                        <th>Detail</th>
-                                        <th>Assign task</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${ orderList}" var="o">
+                                <c:forEach items="${orderDetailViewList}" var="od">
                                     <tr>
-                                        <td>${o.orderNum }</td>
-                                        <td>${o.startTime }</td>
-                                        <td>${o.totalPrice }</td>
-                                        <td>${o.customerUuid }</td>
-                                        <td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a></td>
-                                        <td><a>assign</a></td>
+                                        <td>${od.name }</td>
+                                        <td>${od.amount }</td>
+                                        <td>${od.totalPrice }</td>
+                                 
                                     </tr>
                                  </c:forEach> 
                                 </tbody>
@@ -106,10 +102,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script  src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
 </body>
 

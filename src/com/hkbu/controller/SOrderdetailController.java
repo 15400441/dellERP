@@ -15,5 +15,7 @@ public class SOrderdetailController
 {
 	@Resource(name="sOrderdetailService")
 	private SOrderdetailService sOrderdetailService;
+	
+	
 
 }

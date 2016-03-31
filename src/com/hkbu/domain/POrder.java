@@ -25,9 +25,9 @@ public class POrder implements java.io.Serializable
 	private Long supplierUuid;
 	private Date startTime;
 	private Long totalPrice;
-	private String status;
+	private Integer status;
 	private Long empUuid;
-	private String endTime;
+	private Date endTime;
 
 	// Constructors
 
@@ -37,15 +37,13 @@ public class POrder implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public POrder(String orderNum, Long supplierUuid, String status)
+	public POrder(String orderNum)
 	{
 		this.orderNum = orderNum;
-		this.supplierUuid = supplierUuid;
-		this.status = status;
 	}
 
 	/** full constructor */
-	public POrder(String orderNum, Long supplierUuid, Date startTime, Long totalPrice, String status, Long empUuid, String endTime)
+	public POrder(String orderNum, Long supplierUuid, Date startTime, Long totalPrice, Integer status, Long empUuid, Date endTime)
 	{
 		this.orderNum = orderNum;
 		this.supplierUuid = supplierUuid;
@@ -81,7 +79,7 @@ public class POrder implements java.io.Serializable
 		this.orderNum = orderNum;
 	}
 
-	@Column(name = "supplierUuid", nullable = false)
+	@Column(name = "supplierUuid")
 	public Long getSupplierUuid()
 	{
 		return this.supplierUuid;
@@ -115,13 +113,13 @@ public class POrder implements java.io.Serializable
 		this.totalPrice = totalPrice;
 	}
 
-	@Column(name = "status", nullable = false, length = 10)
-	public String getStatus()
+	@Column(name = "status")
+	public Integer getStatus()
 	{
 		return this.status;
 	}
 
-	public void setStatus(String status)
+	public void setStatus(Integer status)
 	{
 		this.status = status;
 	}
@@ -137,13 +135,14 @@ public class POrder implements java.io.Serializable
 		this.empUuid = empUuid;
 	}
 
-	@Column(name = "endTime")
-	public String getEndTime()
+	@Temporal(TemporalType.DATE)
+	@Column(name = "endTime", length = 0)
+	public Date getEndTime()
 	{
 		return this.endTime;
 	}
 
-	public void setEndTime(String endTime)
+	public void setEndTime(Date endTime)
 	{
 		this.endTime = endTime;
 	}

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  * SOrder entity. @author MyEclipse Persistence Tools
@@ -25,11 +26,15 @@ public class SOrder implements java.io.Serializable
 	private Long customerUuid;
 	private Date startTime;
 	private Long totalPrice;
-	private String status;
+	private Integer status;
 	private Long empUuid;
 	private Date endTime;
+	private String des;
+	private String statusView;
 
 	// Constructors
+
+	
 
 	/** default constructor */
 	public SOrder()
@@ -37,15 +42,14 @@ public class SOrder implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public SOrder(String orderNum, Long customerUuid, String status)
+	public SOrder(String orderNum, Long customerUuid)
 	{
 		this.orderNum = orderNum;
 		this.customerUuid = customerUuid;
-		this.status = status;
 	}
 
 	/** full constructor */
-	public SOrder(String orderNum, Long customerUuid, Date startTime, Long totalPrice, String status, Long empUuid, Date endTime)
+	public SOrder(String orderNum, Long customerUuid, Date startTime, Long totalPrice, Integer status, Long empUuid, Date endTime)
 	{
 		this.orderNum = orderNum;
 		this.customerUuid = customerUuid;
@@ -70,7 +74,7 @@ public class SOrder implements java.io.Serializable
 		this.uuid = uuid;
 	}
 
-	@Column(name = "orderNum", nullable = false, length = 30)
+	@Column(name = "orderNum", nullable = false, length = 38)
 	public String getOrderNum()
 	{
 		return this.orderNum;
@@ -115,16 +119,38 @@ public class SOrder implements java.io.Serializable
 		this.totalPrice = totalPrice;
 	}
 
-	@Column(name = "status", nullable = false, length = 10)
-	public String getStatus()
+	@Column(name = "status")
+	public Integer getStatus()
 	{
 		return this.status;
 	}
 
-	public void setStatus(String status)
+	public void setStatus(Integer status)
 	{
 		this.status = status;
+		if(0==status)
+		{
+			this.statusView="new order";
+		}
+		if(1==status)
+		{
+			this.statusView="order need assmble";
+		}
+		if(2==status)
+		{
+			this.statusView="deliver";
+		}
+		
 	}
+	
+	
+	
+	@Transient
+	public String getStatusView()
+	{
+		return statusView;
+	}
+
 
 	@Column(name = "empUuid")
 	public Long getEmpUuid()
@@ -147,6 +173,17 @@ public class SOrder implements java.io.Serializable
 	public void setEndTime(Date endTime)
 	{
 		this.endTime = endTime;
+	}
+
+	@Column(name = "des")
+	public String getDes()
+	{
+		return des;
+	}
+
+	public void setDes(String des)
+	{
+		this.des = des;
 	}
 
 }
