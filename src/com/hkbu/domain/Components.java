@@ -23,8 +23,11 @@ public class Components implements java.io.Serializable
 	private String unit;
 	private Double inPrice;
 	private Double outPrice;
-	private Integer storageTotal;
+	private String des;
+	private String imgPath;
+	private Integer inventory;
 	private Long componentsTypeUuid;
+	private Integer sufficientLevel;
 
 	// Constructors
 
@@ -33,16 +36,31 @@ public class Components implements java.io.Serializable
 	{
 	}
 
-	/** full constructor */
-	public Components(String name, String producer, String unit, Double inPrice, Double outPrice, Integer storageTotal, Long componentsTypeUuid)
+	/** minimal constructor */
+	public Components(String name, String producer, String unit, Double inPrice, Double outPrice, Integer inventory, Long componentsTypeUuid)
 	{
 		this.name = name;
 		this.producer = producer;
 		this.unit = unit;
 		this.inPrice = inPrice;
 		this.outPrice = outPrice;
-		this.storageTotal = storageTotal;
+		this.inventory = inventory;
 		this.componentsTypeUuid = componentsTypeUuid;
+	}
+
+	/** full constructor */
+	public Components(String name, String producer, String unit, Double inPrice, Double outPrice, String des, String imgPath, Integer inventory, Long componentsTypeUuid, Integer sufficientLevel)
+	{
+		this.name = name;
+		this.producer = producer;
+		this.unit = unit;
+		this.inPrice = inPrice;
+		this.outPrice = outPrice;
+		this.des = des;
+		this.imgPath = imgPath;
+		this.inventory = inventory;
+		this.componentsTypeUuid = componentsTypeUuid;
+		this.sufficientLevel = sufficientLevel;
 	}
 
 	// Property accessors
@@ -114,15 +132,37 @@ public class Components implements java.io.Serializable
 		this.outPrice = outPrice;
 	}
 
-	@Column(name = "storageTotal", nullable = false)
-	public Integer getStorageTotal()
+	@Column(name = "des", length = 65535)
+	public String getDes()
 	{
-		return this.storageTotal;
+		return this.des;
 	}
 
-	public void setStorageTotal(Integer storageTotal)
+	public void setDes(String des)
 	{
-		this.storageTotal = storageTotal;
+		this.des = des;
+	}
+
+	@Column(name = "imgPath", length = 100)
+	public String getImgPath()
+	{
+		return this.imgPath;
+	}
+
+	public void setImgPath(String imgPath)
+	{
+		this.imgPath = imgPath;
+	}
+
+	@Column(name = "inventory", nullable = false)
+	public Integer getInventory()
+	{
+		return this.inventory;
+	}
+
+	public void setInventory(Integer inventory)
+	{
+		this.inventory = inventory;
 	}
 
 	@Column(name = "componentsTypeUuid", nullable = false)
@@ -134,6 +174,17 @@ public class Components implements java.io.Serializable
 	public void setComponentsTypeUuid(Long componentsTypeUuid)
 	{
 		this.componentsTypeUuid = componentsTypeUuid;
+	}
+
+	@Column(name = "sufficientLevel")
+	public Integer getSufficientLevel()
+	{
+		return this.sufficientLevel;
+	}
+
+	public void setSufficientLevel(Integer sufficientLevel)
+	{
+		this.sufficientLevel = sufficientLevel;
 	}
 
 }

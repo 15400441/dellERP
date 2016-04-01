@@ -44,4 +44,11 @@ public class EmpServiceImpl implements EmpService
 		return empMapper.getRoleList(uuid);
 	}
 
+	@Override
+	public List<Map<String, Object>> getEmpInfo()
+	{
+		
+		return empMapper.getEmpInfo();
+	}
+
 }

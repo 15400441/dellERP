@@ -15,6 +15,8 @@ public interface SOrderService
 
 	void update(Long uuid, int status);
 
+	void assignOrder(Long empUuid, Long orderUuid);
+
 	
 
 }

@@ -10,5 +10,13 @@
   	</select>
   	
   	
+  	<select id="getEmpInfo"  resultType="HashMap">
+  		 
+  		select e.uuid, e.name, e.empNum, (select count(ss.empUuid) from s_order ss where ss.empUuid=e.uuid and ss.status=1) as count 
+  		from emp e, emp_role er, role r
+  		where e.uuid=er.empUuid and er.roleUuid=r.uuid and r.code='002' order by count asc
+  	</select>
+  	
+  	
   	
 </mapper>

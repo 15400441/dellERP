@@ -32,9 +32,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-lg-12">
 						<h1 class="page-header">Tables</h1>
 						<ol class="breadcrumb">
-							<li><i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
+							<li><i class="fa fa-dashboard"></i> <a href="index.html">Home</a>
 							</li>
-							<li class="active"><i class="fa fa-table"></i> Tables</li>
+							<li class="active"><i class="fa fa-table"></i> New orders</li>
 						</ol>
 					</div>
 				</div>
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-								<button type="button" class="btn btn-primary">submit</button>
+								<button type="submit" class="btn btn-primary">submit</button>
 							</div>
 							</form>
 							
@@ -148,13 +148,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	$("#orderUuid").val(uuid);
     	
-    	$.ajax({
-    		   type: "GET",
-    		   url: "${pageContext.request.contextPath}/emp/getEmpInfo",
-    		   data: "",
-    		   success: function(map){
     			   $('#table').bootstrapTable({
-    		    		
+    		    		url:"${pageContext.request.contextPath}/emp/getEmpInfo",
     		            columns: [{
     		                field: 'empNum',
     		                title: 'Employ number'
@@ -163,26 +158,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		                title: 'Name'
     		            }, 
     		            {
+    		                field: 'count',
+    		                title: 'Unfinished orders number'
+    		            },
+    		            {
+    		            	
     		            	radio:true
+    		               
     		            	     
     		            }
     		            
     		            ],
-    		           data: map.page.records,
+    		           
     		    	   pagination:true,
-    		    	   pageNum:map.page.currentPageNum,
+    		    	   pageNum:1,
     		    	   pageSize:5,
     		    	   clickToSelect:true,
-    		    	   idField:'id',
-    		    	   selectItemName:'uuid'
+    		    	   idField:'uuid',
+    		    	   selectItemName:'empUuid'
     		        });
     		    	
     		    	$('#myModal').modal('show');
     		    	
-    		    }
+    	}
     			   		   
-    		   }
-    		});
+    		
     	
     	
     	

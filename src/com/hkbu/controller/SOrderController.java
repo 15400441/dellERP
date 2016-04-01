@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hkbu.service.SOrderService;
 import com.hkbu.base.Page;
 import com.hkbu.base.Result;
+import com.hkbu.domain.Emp;
 import com.hkbu.domain.SOrder;
 
 @Controller
@@ -29,6 +30,9 @@ public class SOrderController
 	{
 		if (null == pageNum)
 			pageNum = 1;
+		if(null==status)
+			status=0;
+		empUuid=((Emp)session.getAttribute("loginEmp")).getUuid();
 		int totalCount = sOrderService.getCount(status, empUuid);
 		Page page = new Page<List<Map<String, Object>>>(5, pageNum, totalCount);
 		List<SOrder> list = sOrderService.getOrderListByStatus(status, empUuid, pageNum, page.getPageSize());
@@ -53,6 +57,13 @@ public class SOrderController
 	}
 	
 	
+	@RequestMapping("assignOrder")
+	public String assignOrder(Long empUuid, Long orderUuid,Model model,HttpSession session)
+	{
+		sOrderService.assignOrder(empUuid,orderUuid);
+		
+		return "redirect:/sOrder/orderList";
+	}
 	
 
 	// ajax----------------------------------------------------------------------------

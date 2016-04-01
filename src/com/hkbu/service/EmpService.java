@@ -12,6 +12,8 @@ public interface EmpService
 	void update(Emp emp);
 
 	List<Map<String, Object>> getRoleList(Long uuid);
+
+	List<Map<String, Object>> getEmpInfo();
 	
 
 }

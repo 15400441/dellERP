@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hkbu.service.EmpService;
 import com.hkbu.service.SOrderService;
 import com.hkbu.base.Page;
+import com.hkbu.base.Result;
 import com.hkbu.domain.Customer;
 import com.hkbu.domain.Emp;
 import com.hkbu.domain.SOrder;
@@ -117,11 +118,17 @@ public class EmpController
 	//ajax------------------------------------------------------------
 	@ResponseBody
 	@RequestMapping("/getEmpInfo")
-	public Map<String, Object> getEmpInfo()
+	public List<Map<String, Object>> getEmpInfo(Integer pageNum, Integer pageSize)
 	{
-		Map map=new HashMap<String, Object>();
-		
-		return map;
+		if(null==pageNum)
+			pageNum=1;
+		Result<Map<String, Object>> result=new Result<Map<String,Object>>();
+		List<Map<String, Object>> rows= empService.getEmpInfo();
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("pageNum", pageNum);
+		result.setMap(map);
+		result.setRows(rows);
+		return rows;
 	}
 
 }

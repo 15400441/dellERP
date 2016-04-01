@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface EmpMapper
 {
 	List<Map<String, Object>> getRoleList(Long uuid);
+
+	List<Map<String, Object>> getEmpInfo();
 }
