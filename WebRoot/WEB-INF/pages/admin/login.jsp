@@ -120,7 +120,7 @@ html,body {
 					<div class="col-xs-12  ">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-							<input type="text" id="password" name="pwd" class="form-control" placeholder="password">
+							<input type="password" id="password" name="pwd" class="form-control" placeholder="password">
 						</div>
 					</div>
 				</div>

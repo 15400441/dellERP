@@ -1,5 +1,7 @@
 package com.hkbu.service.impl;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import com.hkbu.domain.Supplier;
@@ -14,5 +16,12 @@ public class SupplierServiceImpl implements SupplierService
 
 @Resource(name="supplierDao")
 private SupplierDao supplierDao;
+
+@Override
+public List<Supplier> getAll()
+{
+	
+	return supplierDao.getAll();
+}
 
 }
