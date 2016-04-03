@@ -1,14 +1,22 @@
            package com.hkbu.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import com.hkbu.domain.Components;
+import com.hkbu.domain.POrder;
+import com.hkbu.domain.POrderdetail;
 import com.hkbu.dao.ComponentsDao;
+import com.hkbu.dao.POrderDao;
+import com.hkbu.dao.POrderdetailDao;
 import com.hkbu.mapper.ComponentsMapper;
 import com.hkbu.service.ComponentsService;
+import com.hkbu.util.MyUtils;
+
 import org.springframework.stereotype.Service;
 
 @Service(value="componentsService")
@@ -20,6 +28,11 @@ public class ComponentsServiceImpl implements ComponentsService
 	private ComponentsDao componentsDao;
 	@Resource(name="componentsMapper")
 	private ComponentsMapper componentsMapper;
+	@Resource(name="pOrderDao")
+	private POrderDao pOrderDao;
+	@Resource(name="pOrderdetailDao")
+	private POrderdetailDao pOrderdetailDao;
+
 
 	@Override
 	public List<Components> getInsufficientComponents()
@@ -39,6 +52,20 @@ public class ComponentsServiceImpl implements ComponentsService
 	@Override
 	public void purchase(Long componentsUuid, Long supplierUuid, int num)
 	{
+		//generate order
+		POrder pOrder=new POrder();
+		pOrder.setOrderNum(MyUtils.generatePOrderNum(supplierUuid));
+		pOrder.setSupplierUuid(supplierUuid);
+		pOrder.setStartTime(new Date());
+		pOrder.setStatus(0);
+		pOrderDao.save(pOrder);
+		
+		
+		//generate order Detail
+		POrderdetail pOrderdetail=new POrderdetail();
+		pOrderdetail
+		
+		
 		//get supplier email and send email to supplier
 		
 		//add num to the purchasing components(the process have been simplified)

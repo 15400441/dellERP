@@ -1,5 +1,10 @@
 package com.hkbu.util;
 
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
 
@@ -17,12 +22,37 @@ public class MyUtils
 		return code;
 	}
 	
+	public static String generatePOrderNum(Long uuid)
+	{
+		DateFormat dateFormat=DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.CHINA);
+		Date date=new Date();
+		String num=dateFormat.format(date);
+		num=num.replace(" ", "").replace("-", "").replace(":", "")+uuid+2;
+		
+		System.out.println(num);
+		return num;
+		
+	}
+	
+	public static String generateSOrderNum(Long uuid)
+	{
+		DateFormat dateFormat=DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.CHINA);
+		Date date=new Date();
+		String num=dateFormat.format(date);
+		num=num.replace(" ", "").replace("-", "").replace(":", "")+uuid+1;
+		
+		System.out.println(num);
+		return num;
+		
+	}
 	
 	
 	
 	public static void main(String[] args)
 	{
-		
+		Long l=new Long("1");
+		generatePOrderNum(l);
+		System.out.println(UUID.randomUUID());
 	}
 	
 	
