@@ -31,9 +31,9 @@ public class ComponentsController
 	}
 	
 	@RequestMapping("/purchase")
-	public String purchase(Long componentsUuid,Long supplierUuid,int num)
+	public String purchase(Long componentsUuid,Long supplierUuid,int num, float inPrice)
 	{
-		componentsService.purchase(componentsUuid,supplierUuid,num);
+		componentsService.purchase(componentsUuid,supplierUuid,num,inPrice);
 		return "redirect:/components/getInsufficientComponents";
 	}
 	

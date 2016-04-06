@@ -31,7 +31,7 @@
 
     <div id="wrapper">
 
-        <%@ include file="nav.jsp"%>
+        <%@ include file="navForManager.jsp"%>
 
         <div id="page-wrapper">
 

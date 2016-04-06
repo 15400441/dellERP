@@ -28,18 +28,21 @@ public class SOrderController
 	@RequestMapping("orderList")
 	public String orderList(Integer status, Long empUuid, Model model, Integer pageNum, HttpSession session)
 	{
+		String role = (String) session.getAttribute("role");
 		if (null == pageNum)
 			pageNum = 1;
 		if(null==status)
 			status=0;
 		empUuid=((Emp)session.getAttribute("loginEmp")).getUuid();
+		if("001".equals(role));
+			empUuid=null;
 		int totalCount = sOrderService.getCount(status, empUuid);
 		Page page = new Page<List<Map<String, Object>>>(5, pageNum, totalCount);
 		List<SOrder> list = sOrderService.getOrderListByStatus(status, empUuid, pageNum, page.getPageSize());
 		page.setRecords(list);
 		model.addAttribute("page", page);
         model.addAttribute("status", status);
-		String role = (String) session.getAttribute("role");
+		
 		if ("001".equals(role))
 			return "admin/sOrders";
 		if ("002".equals(role))

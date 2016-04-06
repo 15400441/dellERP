@@ -1,5 +1,7 @@
 package com.hkbu.service.impl;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import com.hkbu.domain.Dep;
@@ -14,5 +16,11 @@ public class DepServiceImpl implements DepService
 
 	@Resource(name="depDao")
 	private DepDao depDao;
+
+	@Override
+	public List<Dep> getAll()
+	{
+		return depDao.getAll();
+	}
 
 }

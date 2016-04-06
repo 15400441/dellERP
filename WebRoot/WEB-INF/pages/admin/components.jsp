@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<%@ include file="nav.jsp"%>
+		<%@ include file="navForManager.jsp"%>
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<!-- Page Heading -->
@@ -50,8 +50,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<th>Producer</th>
 										<th>Purchasing price</th>
 										<th>Selling price</th>
-										<th>Sufficient level</th>
-										<th>Inventory </th>
+										<th>Inventory/Sufficient level</th>
+										
 										<th>Purchase</th>
 									</tr>
 								</thead>
@@ -62,9 +62,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<td>${c.producer }</td>
 											<td>${c.inPrice }</td>
 											<td>${c.outPrice }</td>
-											<td style="color:red">${c.sufficientLevel }</td>
-											<td style="color:green">${c.inventory }</td>
-											<td><a href="javascript:purchasePop('${c.uuid }','${c.name}')" >purchase</a></td>
+											<td ><label style="color:green">${c.inventory }</label>/<label style="color:red">${c.sufficientLevel }</label></td>
+											
+											<td><a href="javascript:purchasePop('${c.uuid }','${c.name}','${c.inPrice }')" >purchase</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -88,6 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 							<form action="${pageContext.request.contextPath}/components/purchase.do" onsubmit = "return check()">
 							<input type="hidden" name="componentsUuid" value="" id="componentsUuid">
+							<input type="hidden" name="inPrice" value="" id="inPrice">
 							
 							<lable id="name"></lable>  <input type="number" min="1" placeholder="purchse number" name="num" class="form-control" style="width:40%; display:inline" required>
 							<hr>
@@ -124,9 +125,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">
     
     
-    function purchasePop(uuid,name)
+    function purchasePop(uuid,name,price)
     {
     	$("#componentsUuid").val(uuid);
+    	$("#inPrice").val(price);
         $("#name").text(name+":");
        
        $('#table').bootstrapTable({
@@ -164,7 +166,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			   		   
      function check()
     {
-       alert("here");
+      
     	var supplier=$('input:radio[name="supplierUuid"]:checked').val();
     	if(supplier==null)
     	{

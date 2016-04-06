@@ -50,7 +50,7 @@ public class ComponentsServiceImpl implements ComponentsService
 	}
 
 	@Override
-	public void purchase(Long componentsUuid, Long supplierUuid, int num)
+	public void purchase(Long componentsUuid, Long supplierUuid, int num,float inPrice)
 	{
 		//generate order
 		POrder pOrder=new POrder();
@@ -63,10 +63,15 @@ public class ComponentsServiceImpl implements ComponentsService
 		
 		//generate order Detail
 		POrderdetail pOrderdetail=new POrderdetail();
-		pOrderdetail
-		
+		pOrderdetail.setPorderUuid(pOrder.getUuid());
+		pOrderdetail.setComponentsUuid(componentsUuid);
+		pOrderdetail.setDate(new Date());
+		pOrderdetail.setAmount(num);
+		pOrderdetail.setTotalPrice(inPrice*num);
+		pOrderdetailDao.save(pOrderdetail);
 		
 		//get supplier email and send email to supplier
+		
 		
 		//add num to the purchasing components(the process have been simplified)
 		Components components=componentsDao.get(componentsUuid);

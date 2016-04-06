@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="wrapper">
 
         <!-- Navigation -->
-        <%@ include file="nav.jsp"%>
+        <%@ include file="navForManager.jsp"%>
 
         <div id="page-wrapper">
 

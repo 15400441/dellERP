@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<%@ include file="nav.jsp"%>
+		<%@ include file="navForManager.jsp"%>
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<!-- Page Heading -->
@@ -34,11 +34,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ol class="breadcrumb">
 							<li><i class="fa fa-dashboard"></i> <a href="index.html">Home</a>
 							</li>
-							<li class="active"><i class="fa fa-table"></i> New orders</li>
+							<li class="active"><i class="fa fa-table"></i><lable class="orderStatus"> New orders</lable></li>
 						</ol>
 					</div>
 				</div>
 				<!-- /.row -->
+				
+				<!-- for new orders -->
+				<div class="show" id="showControl1">
 				<div class="row">
 					<div class="col-lg-10">
 						<h2>New orders</h2>
@@ -70,12 +73,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 				</div>
+				
+				
+				<!-- /.row -->
+				</div>
+				
+				<!-- for not new orders  -->
+				<div id="showControl2" class="hidden">
+				<div class="row">
+					<div class="col-lg-10">
+						<h2 class="orderStatus"></h2>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-striped">
+								<thead>
+									<tr>
+										<th>Order num</th>
+										<th>Start Time</th>
+										<th>Total price</th>
+										<th>Components needed</th>
+										<th>Description</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${page.records}" var="o">
+										<tr>
+											<td>${o.orderNum }</td>
+											<td>${o.startTime }</td>
+											<td>${o.totalPrice }</td>
+											<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a>
+											</td>
+											<td>${o.des }</td>
+											<td>${o.statusView }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				</div>
+				
 				<form action="${pageContext.request.contextPath}/sOrder/orderList.do" id="searchForm">
 					<input name="status" type="hidden" value="0"> <input name="pageNum" id="pageNum" type="hidden" value="${page.currentPageNum }"> <input id="totalPages" type="hidden" value="${page.totalPageSize }">
 				</form>
-				<ul id="pagination" class="pagination"></ul>
-				<!-- /.row -->
 				
+				<ul id="pagination" class="pagination"></ul>
 				
 				<!-- 模态框（Modal） -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -88,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="modal-body">
 							
 							<form action="${pageContext.request.contextPath}/sOrder/assignOrder.do">
-							<input type="hidden" name="orderUuid" value="" id="orderUuid">
+							<input type="hidden"  name="orderUuid" value="" id="orderUuid">
 							<table id="table">
 					
 							</table>
@@ -121,6 +164,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="${pageContext.request.contextPath}/assets/js/jqPaginator.js"></script>
 		<script type="text/javascript">
     
+		var orderStatus="${status}";
+		if(orderStatus==0)
+			{
+			$(".orderStatus").text("New orders");
+			$("#showControl1").attr("class","show");
+			$("#showControl2").attr("class","hidden");
+			}
+		if(orderStatus==1)
+			{
+			$(".orderStatus").text("Assemblying orders");
+			$("#showControl1").attr("class","hidden");
+			$("#showControl2").attr("class","show");
+			
+			}
+		if(orderStatus==2)
+			{
+			$(".orderStatus").text("Delivering orders");
+			
+			$("#showControl1").attr("class","hidden");
+			$("#showControl2").attr("class","show");
+			}
+		if(orderStatus==3)
+			{
+			$(".orderStatus").text("Finished orders");
+			$("#showControl1").attr("class","hidden");
+			$("#showControl2").attr("class","show");
+			}
+				
+			
+		
     
     current=$('#pageNum').val();
 	totalPage=$('#totalPages').val(); 
@@ -147,6 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     {
     	
     	$("#orderUuid").val(uuid);
+    	alert(uuid);
     	
     			   $('#table').bootstrapTable({
     		    		url:"${pageContext.request.contextPath}/emp/getEmpInfo",

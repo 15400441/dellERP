@@ -11,6 +11,6 @@ public interface ComponentsService
 
 	Map<String, Object> getInsufficientComponentCount();
 
-	void purchase(Long componentsUuid, Long supplierUuid, int num);
+	void purchase(Long componentsUuid, Long supplierUuid, int num, float inPrice);
 
 }

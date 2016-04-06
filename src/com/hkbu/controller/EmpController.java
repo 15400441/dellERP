@@ -13,11 +13,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hkbu.service.DepService;
 import com.hkbu.service.EmpService;
 import com.hkbu.service.SOrderService;
 import com.hkbu.base.Page;
 import com.hkbu.base.Result;
 import com.hkbu.domain.Customer;
+import com.hkbu.domain.Dep;
 import com.hkbu.domain.Emp;
 import com.hkbu.domain.SOrder;
 
@@ -29,6 +31,8 @@ public class EmpController
 	private EmpService empService;
 	@Resource(name = "sOrderService")
 	private SOrderService sOrderService;
+	@Resource(name="depService")
+	private DepService depService;
 
 	@RequestMapping("/login")
 	public String login(Emp emp, HttpSession session, String checkcode, Model model)
@@ -37,9 +41,12 @@ public class EmpController
 		Emp loginEmp = (Emp) session.getAttribute("loginEmp");
 		if (loginEmp != null)
 		{
-			if ("001".equals(session.getAttribute("role")))
+			String loginRole=(String) session.getAttribute("role");
+			//for order manager
+			if ("001".equals(loginRole))
 				return "admin/main";
-			if ("002".equals(session.getAttribute("role")))
+			//for Assembly department employee
+			if ("002".equals(loginRole))
 			{
 				int status = 1;
 				int totalCount = sOrderService.getCount(status, loginEmp.getUuid());
@@ -49,6 +56,18 @@ public class EmpController
 				model.addAttribute("page", page);
 				return "admin/empAssembly";
 			}
+			//for Human Resources department manager
+			if ("003".equals(loginRole))
+			{
+				
+				return "forward:/emp/getEmpList.do";
+			}
+			//for financial department manager
+			if ("004".equals(loginRole))
+			{
+				return "admin/financialMain";
+			}
+			
 		}
 
 		loginEmp = empService.login(emp);
@@ -56,7 +75,10 @@ public class EmpController
 		{
 			model.addAttribute("msg", "username or password wrong");
 			return "forward:/ui/empLoginUI.do";
-		} else
+		} 
+		
+		//username and password are right
+		else
 		{
 
 			session.setAttribute("loginEmp", loginEmp);
@@ -73,11 +95,13 @@ public class EmpController
 			List<Map<String, Object>> roleList = empService.getRoleList(loginEmp.getUuid());
 			for (Map map : roleList)
 			{
+				//for order manager
 				if ("001".equals(map.get("code")))
 				{
 					session.setAttribute("role", "001");
 					return "admin/main";
 				}
+				//for aeeembly department employes
 				if ("002".equals(map.get("code")))
 				{
 					session.setAttribute("role", "002");
@@ -90,9 +114,21 @@ public class EmpController
 					model.addAttribute("page", page);
 					return "admin/empAssembly";
 				}
+				//for Human Resources department manager
+				if ("003".equals(map.get("code")))
+				{
+					session.setAttribute("role", "003");
+					return "forward:/emp/getEmpList.do";
+				}
+				//for financial department manager
+				if ("004".equals(map.get("code")))
+				{
+					session.setAttribute("role", "004");
+					return "admin/financialMain";
+				}
 			}
 
-			return null;
+			return "/ui/404";
 
 		}
 
@@ -113,7 +149,43 @@ public class EmpController
 		return "forward:/ui/empLoginUI.do";
 	}
 	
+	@RequestMapping("/getEmpList")
+	public  String getEmpList(Emp emp, Integer pageNum,Model model,HttpSession session)
+	{
+		//get department
+		List<Dep> depList=depService.getAll();
+		
+		session.setAttribute("searchEmp", emp);
+		if(pageNum==null || pageNum==0)
+			pageNum=1;
+		int totalCount = empService.getCount(emp);
+		Page page = new Page<List<Map<String, Object>>>(5, pageNum, totalCount);
+		List<Emp> list = empService.getEmpList(emp, pageNum, page.getPageSize());
+		page.setRecords(list);
+		model.addAttribute("depList",depList);
+		model.addAttribute("page", page);
+		return "admin/humanResourcesMain";
+	}
 	
+	
+	@RequestMapping("/empUpdateUI")
+	public String empUpdateUI(Long uuid,Model model)
+	{
+		Emp emp=empService.findEmp(uuid);
+		List<Dep> depList=depService.getAll();
+		
+		model.addAttribute("depList", depList);
+		model.addAttribute("updateEmp", emp);
+		return "admin/empInfo";
+	}
+	
+	@RequestMapping("/empUpdate")
+	public String empUpdate(Emp emp,Model model)
+	{
+		empService.updateEmp(emp);
+		model.addAttribute("msg", "update successfully");
+		return empUpdateUI(emp.getUuid(), model);
+	}
 	
 	//ajax------------------------------------------------------------
 	@ResponseBody

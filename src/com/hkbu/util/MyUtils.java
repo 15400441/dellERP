@@ -50,9 +50,9 @@ public class MyUtils
 	
 	public static void main(String[] args)
 	{
-		Long l=new Long("1");
-		generatePOrderNum(l);
-		System.out.println(UUID.randomUUID());
+		Long l=new Long("50.0");
+		//generatePOrderNum(l);
+		System.out.println(l);
 	}
 	
 	

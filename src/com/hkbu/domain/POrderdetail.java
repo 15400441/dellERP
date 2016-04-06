@@ -3,6 +3,8 @@ package com.hkbu.domain;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,7 +25,7 @@ public class POrderdetail implements java.io.Serializable
 	private Long componentsUuid;
 	private Date date;
 	private Integer amount;
-	private Long totalPrice;
+	private float totalPrice;
 
 	// Constructors
 
@@ -33,17 +35,15 @@ public class POrderdetail implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public POrderdetail(Long uuid, Long porderUuid, Long componentsUuid)
+	public POrderdetail(Long porderUuid, Long componentsUuid)
 	{
-		this.uuid = uuid;
 		this.porderUuid = porderUuid;
 		this.componentsUuid = componentsUuid;
 	}
 
 	/** full constructor */
-	public POrderdetail(Long uuid, Long porderUuid, Long componentsUuid, Date date, Integer amount, Long totalPrice)
+	public POrderdetail(Long porderUuid, Long componentsUuid, Date date, Integer amount, Long totalPrice)
 	{
-		this.uuid = uuid;
 		this.porderUuid = porderUuid;
 		this.componentsUuid = componentsUuid;
 		this.date = date;
@@ -53,6 +53,7 @@ public class POrderdetail implements java.io.Serializable
 
 	// Property accessors
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "uuid", unique = true, nullable = false)
 	public Long getUuid()
 	{
@@ -110,12 +111,12 @@ public class POrderdetail implements java.io.Serializable
 	}
 
 	@Column(name = "totalPrice", precision = 10, scale = 0)
-	public Long getTotalPrice()
+	public float getTotalPrice()
 	{
 		return this.totalPrice;
 	}
 
-	public void setTotalPrice(Long totalPrice)
+	public void setTotalPrice(float totalPrice)
 	{
 		this.totalPrice = totalPrice;
 	}
