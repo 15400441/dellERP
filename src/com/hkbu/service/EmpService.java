@@ -24,6 +24,10 @@ public interface EmpService
 
 	void updateEmp(Emp emp);
 
+	void add(Emp emp);
+
+	void deleteEmp(Long uuid);
+
 	
 	
 

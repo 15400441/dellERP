@@ -187,6 +187,33 @@ public class EmpController
 		return empUpdateUI(emp.getUuid(), model);
 	}
 	
+	@RequestMapping("/empAddUI")
+	public String empAddUI(Model model)
+	{
+		
+		List<Dep> depList=depService.getAll();		
+		model.addAttribute("depList", depList);
+		model.addAttribute("add", "add");
+		return "admin/empInfo"; 
+	}
+	
+	
+	@RequestMapping("/empAdd")
+	public String empAdd(Emp emp,Model model)
+	{
+		empService.add(emp);
+		model.addAttribute("msg", "add successfully");
+		return "forward:/emp/getEmpList.do";
+	}
+	
+	@RequestMapping("/empDelete")
+	public String empDelete(Long uuid,Model model)
+	{
+		empService.deleteEmp(uuid);
+		model.addAttribute("msg", "delete successfully");
+		return "forward:/emp/getEmpList.do";
+	}
+	
 	//ajax------------------------------------------------------------
 	@ResponseBody
 	@RequestMapping("/getEmpInfo")
