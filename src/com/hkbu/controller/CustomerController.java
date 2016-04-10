@@ -1,6 +1,7 @@
 package com.hkbu.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hkbu.domain.ComponentsType;
 import com.hkbu.domain.Customer;
+import com.hkbu.service.ComponentsTypeService;
 import com.hkbu.service.CustomerService;
 
 
@@ -21,11 +24,15 @@ public class CustomerController
 	
 	@Resource(name="customerService")
 	private CustomerService customerService;
+	@Resource(name="componentsTypeService")
+	private ComponentsTypeService componentsTypeService;
 	
 	@RequestMapping("/main")
-	  public String customerLoginUI()
+	  public String customerLoginUI(Model model)
 	  {
-		  return "/main";
+		List<ComponentsType> list=componentsTypeService.getAll();
+		model.addAttribute("componentsTypeList", list);
+		return "/main";
 	  }
 	
 	

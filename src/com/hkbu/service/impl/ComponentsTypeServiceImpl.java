@@ -1,5 +1,7 @@
 package com.hkbu.service.impl;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import com.hkbu.domain.ComponentsType;
@@ -14,5 +16,11 @@ public class ComponentsTypeServiceImpl implements ComponentsTypeService
 
 	@Resource(name="componentsTypeDao")
 	private ComponentsTypeDao componentsTypeDao;
+
+	@Override
+	public List<ComponentsType> getAll()
+	{
+		return componentsTypeDao.getAll();
+	}
 
 }

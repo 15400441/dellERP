@@ -46,5 +46,12 @@ public class ComponentsController
 	{
 		return componentsService.getInsufficientComponentCount();
 	}
+	
+	@RequestMapping("/getComponentsByTypeId")
+	@ResponseBody
+	public List<Components> getComponentsByTypeId(Long uuid)
+	{
+		return componentsService.getComponentsByTypeId(uuid);
+	}
 
 }

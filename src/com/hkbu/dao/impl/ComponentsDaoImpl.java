@@ -27,4 +27,12 @@ public class ComponentsDaoImpl extends BaseDaoImpl<Components> implements Compon
 		return getHibernateTemplate().find(hql);
 	}
 
+	@Override
+	public List<Components> getComponentsByTypeId(Long uuid)
+	{
+		String hql="from Components where componentsTypeUuid=?";
+		
+		return getHibernateTemplate().find(hql, uuid);
+	}
+
 }

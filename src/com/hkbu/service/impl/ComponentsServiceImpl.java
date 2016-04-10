@@ -81,4 +81,10 @@ public class ComponentsServiceImpl implements ComponentsService
 		
 	}
 
+	@Override
+	public List<Components> getComponentsByTypeId(Long uuid)
+	{
+		return componentsDao.getComponentsByTypeId(uuid);
+	}
+
 }

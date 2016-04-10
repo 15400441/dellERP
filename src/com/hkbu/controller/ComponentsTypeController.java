@@ -15,5 +15,7 @@ public class ComponentsTypeController
 {
 	@Resource(name="componentsTypeService")
 	private ComponentsTypeService componentsTypeService;
+	
+    
 
 }

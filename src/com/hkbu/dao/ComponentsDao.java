@@ -10,4 +10,6 @@ public interface ComponentsDao extends BaseDao<Components>
 
 	List<Components> getInsufficientComponents();
 
+	List<Components> getComponentsByTypeId(Long uuid);
+
 }

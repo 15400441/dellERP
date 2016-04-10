@@ -13,4 +13,6 @@ public interface ComponentsService
 
 	void purchase(Long componentsUuid, Long supplierUuid, int num, float inPrice);
 
+	List<Components> getComponentsByTypeId(Long uuid);
+
 }
