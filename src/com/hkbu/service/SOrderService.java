@@ -17,6 +17,12 @@ public interface SOrderService
 
 	void assignOrder(Long empUuid, Long orderUuid);
 
+	void generateOrder(Long[] uuid, Integer[] num, Long customerUuid);
+
+	List<SOrder> getOrderListByCustomerUuid(Long uuid);
+
+	void confirmOrder(Long uuid, Long customerUuid);
+
 	
 
 }

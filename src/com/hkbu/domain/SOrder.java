@@ -25,7 +25,7 @@ public class SOrder implements java.io.Serializable
 	private String orderNum;
 	private Long customerUuid;
 	private Date startTime;
-	private Long totalPrice;
+	private Float totalPrice;
 	private Integer status;
 	private Long empUuid;
 	private Date endTime;
@@ -49,7 +49,7 @@ public class SOrder implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public SOrder(String orderNum, Long customerUuid, Date startTime, Long totalPrice, Integer status, Long empUuid, Date endTime)
+	public SOrder(String orderNum, Long customerUuid, Date startTime, Float totalPrice, Integer status, Long empUuid, Date endTime)
 	{
 		this.orderNum = orderNum;
 		this.customerUuid = customerUuid;
@@ -62,7 +62,7 @@ public class SOrder implements java.io.Serializable
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
+	@GeneratedValue
 	@Column(name = "uuid", unique = true, nullable = false)
 	public Long getUuid()
 	{
@@ -109,12 +109,12 @@ public class SOrder implements java.io.Serializable
 	}
 
 	@Column(name = "totalPrice", precision = 10, scale = 0)
-	public Long getTotalPrice()
+	public Float getTotalPrice()
 	{
 		return this.totalPrice;
 	}
 
-	public void setTotalPrice(Long totalPrice)
+	public void setTotalPrice(Float totalPrice)
 	{
 		this.totalPrice = totalPrice;
 	}
@@ -139,6 +139,10 @@ public class SOrder implements java.io.Serializable
 		if(2==status)
 		{
 			this.statusView="deliver";
+		}
+		if(3==status)
+		{
+			this.statusView="finished";
 		}
 		
 	}

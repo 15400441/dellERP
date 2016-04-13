@@ -10,9 +10,11 @@ import javax.annotation.Resource;
 import com.hkbu.domain.Components;
 import com.hkbu.domain.POrder;
 import com.hkbu.domain.POrderdetail;
+import com.hkbu.domain.Transaction;
 import com.hkbu.dao.ComponentsDao;
 import com.hkbu.dao.POrderDao;
 import com.hkbu.dao.POrderdetailDao;
+import com.hkbu.dao.TransactionDao;
 import com.hkbu.mapper.ComponentsMapper;
 import com.hkbu.service.ComponentsService;
 import com.hkbu.util.MyUtils;
@@ -32,7 +34,8 @@ public class ComponentsServiceImpl implements ComponentsService
 	private POrderDao pOrderDao;
 	@Resource(name="pOrderdetailDao")
 	private POrderdetailDao pOrderdetailDao;
-
+    @Resource(name="transactionDao")
+	private  TransactionDao transactionDao;
 
 	@Override
 	public List<Components> getInsufficientComponents()
@@ -58,6 +61,7 @@ public class ComponentsServiceImpl implements ComponentsService
 		pOrder.setSupplierUuid(supplierUuid);
 		pOrder.setStartTime(new Date());
 		pOrder.setStatus(0);
+		pOrder.setTotalPrice(inPrice*num);
 		pOrderDao.save(pOrder);
 		
 		
@@ -79,6 +83,14 @@ public class ComponentsServiceImpl implements ComponentsService
 			components.setInventory(0);
 		components.setInventory(components.getInventory()+num);
 		
+		//generate Transaction
+		Transaction transaction=new Transaction();
+		transaction.setType("buy");
+		transaction.setDate(new Date());
+		transaction.setMoneyOut(inPrice*num);
+		transaction.setOrderUuid(pOrder.getUuid());
+		transaction.setSupplierUuid(supplierUuid);
+		transactionDao.save(transaction);	
 	}
 
 	@Override

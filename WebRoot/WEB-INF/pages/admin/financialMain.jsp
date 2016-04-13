@@ -16,103 +16,68 @@
 <link href="${pageContext.request.contextPath}/assets/css/sb-admin.css" rel="stylesheet">
 <!-- Morris Charts CSS -->
 <link href="${pageContext.request.contextPath}/assets/css/plugins/morris.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="wrapper">
-		<%@ include file="nav.jsp"%>
+		<%@ include file="navForFinancial.jsp"%>
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<!-- Page Heading -->
 				<div class="row">
-					<div class="col-lg-12">
-						<h1 class="page-header">
-							Dashboard <small>Statistics Overview</small>
-						</h1>
-						<ol class="breadcrumb">
-							<li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
-						</ol>
+					<div class="form-group">
+						<form action="${pageContext.request.contextPath}/transaction/getTransactionList.do" id="searchForm" method="post">
+						
+						    Type:<select class="form-control" name="type" style="width:20%; display:inline" id="typeSelect">
+						    <option value="">All</option>
+						    <option value="sale">Sale</option>
+						    <option value="buy">Buy</option>						    
+						    </select>
+							Start Date:<input name="startDate" id="datetimepicker1" type="text" value="${searchEmp.name }" class="form-control" style="width:20%; display:inline"> 
+							End Date:<input name="endDate" id="datetimepicker2" type="text" value="${searchEmp.empNum }" class="form-control" style="width:20%; display:inline"> 
+							<input name="pageNum" id="pageNum" type="hidden" value="${page.currentPageNum }">
+                            <input id="totalPages" type="hidden" value="${page.totalPageSize }">
+							<button type="submit" class="btn btn-primary">Search</button>  
+							
+						</form>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6">
-						<div class="panel panel-yellow">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-shopping-cart fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<div class="huge" id="newOrderCount">${page.totalRecordsNum }</div>
-										<div>Orders need Assemble !</div>
-									</div>
-								</div>
-							</div>
-							<a href="${pageContext.request.contextPath}/sOrder/orderList.do?status=1&empUuid=${loginEmp.uuid}">
-								<div class="panel-footer">
-									<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i>
-									</span>
-									<div class="clearfix"></div>
-								</div> </a>
-						</div>
-					</div>
-				<div class="row">
-					<div class="col-lg-4 col-md-6">
-						<div class="panel panel-green">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-shopping-cart fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<div class="huge">12</div>
-										<div>Finished Orders!</div>
-									</div>
-								</div>
-							</div>
-							<a  onclik="changeClass()" href="${pageContext.request.contextPath}/sOrder/orderList.do?status=2&empUuid=${loginEmp.uuid}">
-								<div class="panel-footer">
-									<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i>
-									</span>
-									<div class="clearfix"></div>
-								</div> </a>
-						</div>
-					</div>
-					
-				</div>
+				
+				
 				<!-- /.row -->
 				
 				<div id="showControl1" class="show">
 				<div class="row">
 					<div class="col-lg-10">
-						<h2>Orders need Assemble</h2>
+						<h2>Transactions</h2>
 						<div class="table-responsive">
 							<table class="table table-bordered table-hover table-striped">
 								<thead>
 									<tr>
-										<th>Order num</th>
-										<th>Start Time</th>
-										<th>Total price</th>
-										<th>Components needed</th>
-										<th>Description</th>
-										<th>Status</th>
-										<th>Finish task</th>
+										<th>Transaction ID</th>
+										<th>Transaction type </th>
+										<th>Income</th>
+										<th>Expense</th>
+										<th>Detail</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${page.records}" var="o">
+									<c:forEach items="${page.records}" var="t">
 										<tr>
-											<td>${o.orderNum }</td>
-											<td>${o.startTime }</td>
-											<td>${o.totalPrice }</td>
-											<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a>
-											</td>
-											<td>${o.des }</td>
-											<td>${o.statusView }</td>
-											<td><a href="${pageContext.request.contextPath}/emp/changeSorderStatus?uuid=${loginEmp.uuid}&status=2">finish</a>
+											<td>${t.uuid }</td>
+											<td>${t.type }</td>
+											<td>${t.moneyIn }</td>
+											<td>${t.moneyOut }</td>
+											<td><a href="#">detail</a>
 											</td>
 										</tr>
 									</c:forEach>
+									<tr>
+								    <td colspan="5">Total transaction income / Total transaction expense:
+								    </td>
+								    </tr>
 								</tbody>
 							</table>
 						</div>
@@ -139,17 +104,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${page.records}" var="o">
-										<tr>
-											<td>${o.orderNum }</td>
-											<td>${o.startTime }</td>
-											<td>${o.totalPrice }</td>
-											<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a>
-											</td>
-											<td>${o.des }</td>
-											<td>${o.statusView }</td>										
-										</tr>
-									</c:forEach>
+								    
+									
+									<tr>
+								    <td >total transaction income/total transaction expense:
+								    </td>
+								    </tr>
 								</tbody>
 							</table>
 						</div>
@@ -175,8 +135,21 @@
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <!-- Morris Charts JavaScript -->
 <script src="${pageContext.request.contextPath}/assets/js/jqPaginator.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript">
-   
+$('#datetimepicker1').datetimepicker({
+    format: 'yyyy-mm-dd ',
+    todayBtn :true,
+    minView :2,
+    autoclose: true
+});
+
+$('#datetimepicker2').datetimepicker({
+    format: 'yyyy-mm-dd ',
+    todayBtn :true,
+    minView :2,
+    autoclose: true
+});
    
    current=$('#pageNum').val();
 	totalPage=$('#totalPages').val(); 
@@ -199,18 +172,7 @@
    });
    
    
-   var status="${status}";
-  
-   if(2==status)
-	   {
-	   $("#showControl1").attr("class","hidden");
-	   $("#showControl2").attr("class","show");
-	   }
-   if(1==status)
-	   {
-	   $("#showControl1").attr("class","show");
-	   $("#showControl2").attr("class","hidden");
-	   }
+   
    
    </script>
 </html>

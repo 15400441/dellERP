@@ -70,6 +70,10 @@ public class EmpController
 			
 		}
 
+		if(emp.getPwd()==null)
+		{
+			return "forward:/ui/empLoginUI.do";
+		}
 		loginEmp = empService.login(emp);
 		if (loginEmp == null)
 		{

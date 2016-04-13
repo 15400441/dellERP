@@ -62,6 +62,7 @@ public class Customer implements java.io.Serializable
 
 	public Customer(Customer customer)
 	{
+		this .uuid=customer.getUuid();
 		this.userName = customer.getUserName();
 		this.pwd = customer.getPwd();
 		this.name = customer.getName();

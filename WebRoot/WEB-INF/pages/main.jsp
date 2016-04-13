@@ -15,7 +15,7 @@
 	<%@ include file="popLogin.jsp"%>
 	<div class="well well-lg">
 		<h1>
-			Wellcome to our DELLERP system <small>Pick whatever you want </small>
+			<span id="customerUsername">${customer.userName}</span> Wellcome to our DELLERP system <small>Pick whatever you want </small>
 		</h1>
 	</div>
 	<nav class="navbar navbar-default">
@@ -70,6 +70,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="col-md-12">
+					<form action="${pageContext.request.contextPath}/sOrder/generateOrder.do" method="post">
 						<table class="table">
 							<thead>
 								<tr>
@@ -83,8 +84,10 @@
 								<c:forEach items="${componentsTypeList}" var="ct">
 									<tr>
 										<td>${ct.name }</td>
-										<td></td>
-										<td><input name="num" type="text" value="0" class="form-control" style="width:60px;"></td>
+										<td id="${ct.uuid }"></td>
+										<td><input name="num" type="text" value="0" class="form-control" style="width:60px;">
+										    <input name="uuid" type="hidden"  class="form-control" id="${ct.uuid }para" >										
+										</td>
 										<td><a href="#"><span class="glyphicon glyphicon-remove"></span>
 										</a>
 										</td>
@@ -93,8 +96,9 @@
 							</tbody>
 						</table>
 						<div class="col-md-12">
-							<button type="button" class="btn btn-info" class="col-md-offset-1">Submit Order</button>
+							<button type="submit" class="btn btn-info" class="col-md-offset-1">Submit Order</button>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -107,7 +111,7 @@
 						<thead>
 							<tr>
 								<th data-field="uuid" data-formatter="imgFormatter">Picture</th>
-								<th data-field="name" > Name</th>
+								<th data-field="name" data-formatter="nameFormatter"> Name</th>
 								<th data-field="outPrice" > Price</th>
 								<th data-field="uuid"  data-formatter="buttonFormatter"> </th>
 							
@@ -120,6 +124,7 @@
 			</div>
 		</div>
 	</div>
+	<div class="hidden" id="msg">${info }</div>
 	<div class="well">
 		<div class="panel-head">
 			<li><a href="#">Contact Us</a> <a href="#" class="col-md-offset-1">Feedback</a> <a href="#" class="col-md-offset-1">Others</a></li> Design by XXX 2016@CopyRight

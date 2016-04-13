@@ -26,7 +26,7 @@ public class POrder implements java.io.Serializable
 	private String orderNum;
 	private Long supplierUuid;
 	private Date startTime;
-	private Long totalPrice;
+	private Float totalPrice;
 	private Integer status;
 	private Long empUuid;
 	private Date endTime;
@@ -45,7 +45,7 @@ public class POrder implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public POrder(String orderNum, Long supplierUuid, Date startTime, Long totalPrice, Integer status, Long empUuid, Date endTime)
+	public POrder(String orderNum, Long supplierUuid, Date startTime, Float totalPrice, Integer status, Long empUuid, Date endTime)
 	{
 		this.orderNum = orderNum;
 		this.supplierUuid = supplierUuid;
@@ -105,12 +105,12 @@ public class POrder implements java.io.Serializable
 	}
 
 	@Column(name = "totalPrice", precision = 10, scale = 0)
-	public Long getTotalPrice()
+	public Float getTotalPrice()
 	{
 		return this.totalPrice;
 	}
 
-	public void setTotalPrice(Long totalPrice)
+	public void setTotalPrice(Float totalPrice)
 	{
 		this.totalPrice = totalPrice;
 	}

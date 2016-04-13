@@ -31,5 +31,13 @@ public class SOrderDaoImpl extends BaseDaoImpl<SOrder> implements SOrderDao
 			
 	}
 
+	
+	public List<SOrder> getOrderListByCustomerUuid(Long uuid)
+	{
+		String hql="from SOrder where customerUuid=?";
+		return getHibernateTemplate().find(hql,uuid);
+		
+	}
+
 
 }

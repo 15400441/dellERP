@@ -109,7 +109,7 @@
 											</td>
 											<td>${o.des }</td>
 											<td>${o.statusView }</td>
-											<td><a href="${pageContext.request.contextPath}/emp/changeSorderStatus?uuid=${loginEmp.uuid}&status=2">finish</a>
+											<td><a href="${pageContext.request.contextPath}/emp/changeSorderStatus?uuid=${o.uuid}&status=2">finish</a>
 											</td>
 										</tr>
 									</c:forEach>

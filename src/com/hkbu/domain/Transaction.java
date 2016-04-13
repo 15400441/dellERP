@@ -3,6 +3,7 @@ package com.hkbu.domain;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,8 +23,8 @@ public class Transaction implements java.io.Serializable
 	private Date date;
 	private Long orderUuid;
 	private Long customerUuid;
-	private Long moneyIn;
-	private Long moneyOut;
+	private Float moneyIn;
+	private Float moneyOut;
 	private String type;
 	private Long supplierUuid;
 
@@ -42,7 +43,7 @@ public class Transaction implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public Transaction(Long uuid, Date date, Long orderUuid, Long customerUuid, Long moneyIn, Long moneyOut, String type, Long supplierUuid)
+	public Transaction(Long uuid, Date date, Long orderUuid, Long customerUuid, Float moneyIn, Float moneyOut, String type, Long supplierUuid)
 	{
 		this.uuid = uuid;
 		this.date = date;
@@ -56,6 +57,7 @@ public class Transaction implements java.io.Serializable
 
 	// Property accessors
 	@Id
+	@GeneratedValue
 	@Column(name = "uuid", unique = true, nullable = false)
 	public Long getUuid()
 	{
@@ -102,23 +104,23 @@ public class Transaction implements java.io.Serializable
 	}
 
 	@Column(name = "moneyIn", precision = 10, scale = 0)
-	public Long getMoneyIn()
+	public Float getMoneyIn()
 	{
 		return this.moneyIn;
 	}
 
-	public void setMoneyIn(Long moneyIn)
+	public void setMoneyIn(Float moneyIn)
 	{
 		this.moneyIn = moneyIn;
 	}
 
 	@Column(name = "moneyOut", precision = 10, scale = 0)
-	public Long getMoneyOut()
+	public Float getMoneyOut()
 	{
 		return this.moneyOut;
 	}
 
-	public void setMoneyOut(Long moneyOut)
+	public void setMoneyOut(Float moneyOut)
 	{
 		this.moneyOut = moneyOut;
 	}
