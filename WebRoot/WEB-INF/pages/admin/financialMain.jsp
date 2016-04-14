@@ -51,7 +51,9 @@
 				<div id="showControl1" class="show">
 				<div class="row">
 					<div class="col-lg-10">
+					    
 						<h2>Transactions</h2>
+						<a href="${pageContext.request.contextPath}/transaction/downloadTransactions.do">download this month transactions</a>
 						<div class="table-responsive">
 							<table class="table table-bordered table-hover table-striped">
 								<thead>
@@ -60,6 +62,7 @@
 										<th>Transaction type </th>
 										<th>Income</th>
 										<th>Expense</th>
+										<th>Date</th>
 										<th>Detail</th>
 									</tr>
 								</thead>
@@ -70,12 +73,13 @@
 											<td>${t.type }</td>
 											<td>${t.moneyIn }</td>
 											<td>${t.moneyOut }</td>
+											<td>${t.date }</td>
 											<td><a href="#">detail</a>
 											</td>
 										</tr>
 									</c:forEach>
 									<tr>
-								    <td colspan="5">Total transaction income / Total transaction expense:
+								    <td colspan="6">Total transaction income / Total transaction expense:
 								    </td>
 								    </tr>
 								</tbody>
@@ -87,34 +91,7 @@
 				<!-- /.row -->
 				
 				<div id="showControl2" class="hidden">
-				<div class="row">
-					<div class="col-lg-10">
-						<h2>finished assembley orders</h2>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th>Order num</th>
-										<th>Start Time</th>
-										<th>Total price</th>
-										<th>Components needed</th>
-										<th>Description</th>
-										<th>status</th>
-										
-									</tr>
-								</thead>
-								<tbody>
-								    
-									
-									<tr>
-								    <td >total transaction income/total transaction expense:
-								    </td>
-								    </tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
+				
 				</div>
 				<!-- /.row -->
 				
@@ -137,19 +114,40 @@
 <script src="${pageContext.request.contextPath}/assets/js/jqPaginator.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript">
-$('#datetimepicker1').datetimepicker({
-    format: 'yyyy-mm-dd ',
-    todayBtn :true,
-    minView :2,
-    autoclose: true
-});
 
-$('#datetimepicker2').datetimepicker({
-    format: 'yyyy-mm-dd ',
-    todayBtn :true,
-    minView :2,
-    autoclose: true
-});
+
+
+function initailSearchCriteria()
+{
+	var type="${transaction.type}";
+	var startDate="${startDate}";
+	var endDate="${endDate}";
+	$("#typeSelect").val(type);
+	$("#datetimepicker1").val(startDate);
+	$("#datetimepicker2").val(endDate);
+}
+
+initailSearchCriteria();
+
+function initialTimePicker()
+{
+	$('#datetimepicker1').datetimepicker({
+	    format: 'yyyy-mm-dd ',
+	    todayBtn :true,
+	    minView :2,
+	    autoclose: true
+	});
+
+	$('#datetimepicker2').datetimepicker({
+	    format: 'yyyy-mm-dd ',
+	    todayBtn :true,
+	    minView :2,
+	    autoclose: true
+	});
+	
+}
+
+initialTimePicker();
    
    current=$('#pageNum').val();
 	totalPage=$('#totalPages').val(); 

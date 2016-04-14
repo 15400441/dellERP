@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hkbu.service.DepService;
 import com.hkbu.service.EmpService;
 import com.hkbu.service.SOrderService;
+import com.hkbu.service.TransactionService;
 import com.hkbu.base.Page;
 import com.hkbu.base.Result;
 import com.hkbu.domain.Customer;
 import com.hkbu.domain.Dep;
 import com.hkbu.domain.Emp;
 import com.hkbu.domain.SOrder;
+import com.hkbu.domain.Transaction;
 
 @Controller
 @RequestMapping("/emp")
@@ -33,6 +35,8 @@ public class EmpController
 	private SOrderService sOrderService;
 	@Resource(name="depService")
 	private DepService depService;
+	@Resource(name="transactionService")
+	private TransactionService transactionService;
 
 	@RequestMapping("/login")
 	public String login(Emp emp, HttpSession session, String checkcode, Model model)
@@ -65,6 +69,10 @@ public class EmpController
 			//for financial department manager
 			if ("004".equals(loginRole))
 			{
+				//get transactions
+				int totalCount=transactionService.getCount(new Transaction(),null,null);
+				Page<Transaction> page=transactionService.getTransactionList(new Transaction(),1,totalCount,null,null);
+				model.addAttribute("page",page);
 				return "admin/financialMain";
 			}
 			
@@ -128,7 +136,11 @@ public class EmpController
 				if ("004".equals(map.get("code")))
 				{
 					session.setAttribute("role", "004");
+					int totalCount=transactionService.getCount(new Transaction(),null,null);
+					Page<Transaction> page=transactionService.getTransactionList(new Transaction(),1,totalCount,null,null);
+					model.addAttribute("page",page);
 					return "admin/financialMain";
+					
 				}
 			}
 
@@ -217,6 +229,8 @@ public class EmpController
 		model.addAttribute("msg", "delete successfully");
 		return "forward:/emp/getEmpList.do";
 	}
+	
+	
 	
 	//ajax------------------------------------------------------------
 	@ResponseBody
