@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Tables</h1>
+						<h1 class="page-header">Orders</h1>
 						<ol class="breadcrumb">
 							<li><i class="fa fa-dashboard"></i> <a href="index.html">Home</a>
 							</li>
@@ -220,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     {
     	
     	$("#orderUuid").val(uuid);
-    	alert(uuid);
+    	
     	
     			   $('#table').bootstrapTable({
     		    		url:"${pageContext.request.contextPath}/emp/getEmpInfo",

@@ -20,14 +20,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<div class="well well-lg">
 		<h1>
-			Wellcome to our DELLERP system 
+			My home
 		</h1>
 	</div>
 		
 		
 		
 				<div class="row">
-					<div class="col-lg-10">
+					<div class="col-lg-12">
 						<h2 class="orderStatus">My orders</h2>
 						<div class="table-responsive">
 							<table class="table table-bordered table-hover table-striped">
@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<td>${o.totalPrice }</td>
 											
 											<td>${o.des }</td>
-											<td>${o.statusView }</td>
+											<td class="finished">${o.statusView }</td>
 											<td><a href="${pageContext.request.contextPath}/sOrder/confirmOrder?uuid=${o.uuid}">confirm</a>
 											</td>
 										</tr>
@@ -74,6 +74,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var msg='${msg}';
 		if(msg!=null && msg!="" )
 		alert(msg);
+		
+		function disappearA()
+		{
+			var obj=$(".finished");
+			$.each(obj,function(i,val){
+				var $v=$(val)
+				if($v.text().trim()=="finished")
+					$v.next().text("disabled");
+				
+			});
+		}
+		
+		disappearA()
+		
     
     </script>
 </body>

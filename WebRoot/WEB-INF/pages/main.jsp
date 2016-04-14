@@ -15,7 +15,7 @@
 	<%@ include file="popLogin.jsp"%>
 	<div class="well well-lg">
 		<h1>
-			<span id="customerUsername">${customer.userName}</span> Wellcome to our DELLERP system <small>Pick whatever you want </small>
+			 Wellcome to our DELLERP system <small>Pick whatever you want </small>
 		</h1>
 	</div>
 	<nav class="navbar navbar-default">
@@ -32,8 +32,12 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">New <span class="sr-only">(current)</span> </a>
 					</li>
-					<li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a></li>
-					<li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a>
+					<li id="login"><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a></li>
+					<li id="regist"><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a>
+					</li>
+					<li class="hidden" id="home"><a id="goHome" data-toggle="modal" href="${pageContext.request.contextPath}/sOrder/getOrderListByCustomerUuid.do" >Home of <span id="customerUsername">${customer.userName}</span></a>
+					</li>
+					<li class="hidden" id="logout"><a id="goHome" data-toggle="modal" href="${pageContext.request.contextPath}/customer/logout.do" >Logout</a>
 					</li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search">

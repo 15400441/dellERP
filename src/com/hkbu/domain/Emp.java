@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  * Emp entity. @author MyEclipse Persistence Tools
@@ -35,7 +36,7 @@ public class Emp implements java.io.Serializable
 	private Date lastLoginTime;
 	private String lastLoginIp;
 	private Integer loginTimes;
-
+    private String genderView;
 	// Constructors
 
 	/** default constructor */
@@ -188,6 +189,14 @@ public class Emp implements java.io.Serializable
 	public void setGender(Integer gender)
 	{
 		this.gender = gender;
+		if (gender!=null && gender==1)
+		{
+			this.genderView="male";
+		}
+		if(gender!=null && gender==2)
+		{
+			this.genderView="female";
+		}
 	}
 
 	@Column(name = "address")
@@ -256,5 +265,13 @@ public class Emp implements java.io.Serializable
 	{
 		this.loginTimes = loginTimes;
 	}
+
+	@Transient
+	public String getGenderView()
+	{
+		return genderView;
+	}
+
+	
 
 }

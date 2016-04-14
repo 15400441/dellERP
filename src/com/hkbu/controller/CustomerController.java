@@ -66,11 +66,11 @@ public class CustomerController
 			return map;
 	}
 	
-	@RequestMapping("/customerLogout")
+	@RequestMapping("/logout")
 	public String logout(HttpSession session)
 	{
 		session.invalidate();
-		return "forward:/customer/customerLoginUI.do";
+		return "redirect:/customer/main.do";
 	}
 	
 	@RequestMapping("/test")

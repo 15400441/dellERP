@@ -71,7 +71,7 @@
 										<c:forEach items="${page.records}" var="e">
 											<tr>
 												<td>${e.name }</td>
-												<td>${e.gender }</td>
+												<td>${e.genderView }</td>
 												<td>${e.empNum }</td>
 												<td>${e.email }</td>
 												<td>${e.salary }</td>

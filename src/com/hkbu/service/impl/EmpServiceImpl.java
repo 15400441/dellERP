@@ -12,6 +12,7 @@ import com.hkbu.mapper.EmpMapper;
 import com.hkbu.queryModel.EmpQueryModel;
 import com.hkbu.service.EmpService;
 import com.hkbu.util.MD5Utils;
+import com.hkbu.util.MyUtils;
 
 import org.springframework.stereotype.Service;
 
@@ -105,6 +106,7 @@ public class EmpServiceImpl implements EmpService
 	public void add(Emp emp)
 	{
 		emp.setPwd(MD5Utils.md5(emp.getPwd()));
+		
 		empDao.save(emp);
 		
 	}

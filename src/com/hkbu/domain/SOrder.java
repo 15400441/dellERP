@@ -32,6 +32,7 @@ public class SOrder implements java.io.Serializable
 	private String des;
 	private String statusView;
 
+
 	// Constructors
 
 	
@@ -134,11 +135,11 @@ public class SOrder implements java.io.Serializable
 		}
 		if(1==status)
 		{
-			this.statusView="order need assmble";
+			this.statusView="assembling";
 		}
 		if(2==status)
 		{
-			this.statusView="deliver";
+			this.statusView="delivering";
 		}
 		if(3==status)
 		{

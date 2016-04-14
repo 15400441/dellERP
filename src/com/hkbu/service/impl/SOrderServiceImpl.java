@@ -92,6 +92,13 @@ public class SOrderServiceImpl implements SOrderService
 		sOrder.setEmpUuid(empUuid);
 		sOrder.setStatus(1);
 		
+		List<SOrderdetail> sOrderdetails=sOrderdetailDao.getBySOrderUuid(orderUuid);
+		for (SOrderdetail d : sOrderdetails)
+		{
+			Components components=componentsDao.get(d.getComponentsUuid());
+			components.setInventory(components.getInventory()-d.getAmount());
+		}
+		
 		
 	}
 

@@ -2,6 +2,15 @@ var m = $("#msg").text();
 if (m != null && m.trim() != "")
 	alert(m);
 
+var customerName=$("#customerUsername").text();
+if(customerName!=null && customerName.trim()!="")
+	{
+	$("#home").attr("class","show");
+	$("#logout").attr("class","show");
+	$("#login").attr("class","hidden");
+	$("#regist").attr("class","hidden");
+	}
+
 $.get("/dellERP/components/getComponentsByTypeId?uuid=1", function(data)
 {
 	$('#showComponents').bootstrapTable({
@@ -69,7 +78,12 @@ function loginAjax()
 		var message = data.msg;
 		if (message != null && message != "")
 			alert(message);
-		$("#customerUsername").text(data.customer.userName+",");
+		
+		$("#home").attr("class","show");
+		$("#customerUsername").text(data.customer.userName);
+		$("#logout").attr("class","show");
+		$("#login").attr("class","hidden");
+		$("#regist").attr("class","hidden");
 		
 
 	});

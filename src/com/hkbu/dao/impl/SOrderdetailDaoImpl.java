@@ -1,5 +1,7 @@
 package com.hkbu.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +17,14 @@ public class SOrderdetailDaoImpl extends BaseDaoImpl<SOrderdetail> implements SO
 
 	public void doQbc(DetachedCriteria dc,BaseQueryModel qm)
 	{
-		// TODO 添加自定义查询条件
+		
+	}
+
+	@Override
+	public List<SOrderdetail> getBySOrderUuid(Long orderUuid)
+	{
+		String hql="from SOrderdetail where  sorderUuid=?";
+		return getHibernateTemplate().find(hql,orderUuid);
 	}
 
 }

@@ -78,10 +78,7 @@
 											</td>
 										</tr>
 									</c:forEach>
-									<tr>
-								    <td colspan="6">Total transaction income / Total transaction expense:
-								    </td>
-								    </tr>
+									
 								</tbody>
 							</table>
 						</div>
