@@ -51,6 +51,7 @@ public class CustomerController
 			if(loginCustomer==null)
 			{
 				map.put("msg", "Wrong username or password");
+				map.put("success", "0");
 			}
 			else
 			{  
@@ -60,6 +61,7 @@ public class CustomerController
 				updateCustomer.setLastLoginTime(new Date());		
 				customerService.update(updateCustomer);
 				map.put("msg", "Login successfully");
+				map.put("success", "1");
 				map.put("customer", loginCustomer);
 			}
 		

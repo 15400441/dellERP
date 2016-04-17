@@ -79,11 +79,15 @@ function loginAjax()
 		if (message != null && message != "")
 			alert(message);
 		
+		if(data.success=="1")
+			{
 		$("#home").attr("class","show");
 		$("#customerUsername").text(data.customer.userName);
 		$("#logout").attr("class","show");
 		$("#login").attr("class","hidden");
 		$("#regist").attr("class","hidden");
+		$('#loginModal').modal('hide'); 
+			}
 		
 
 	});

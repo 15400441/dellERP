@@ -81,7 +81,7 @@ public class SOrderController
 			return "forward:/customer/main";
 		}
 		boolean flag = false;
-		String info = null;
+		
 		for (int i = 0; i < uuid.length; i++)
 		{
 			if (uuid[i] != null)
