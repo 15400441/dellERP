@@ -110,7 +110,7 @@ public class Customer implements java.io.Serializable
 		this.pwd = pwd;
 	}
 
-	@Column(name = "name", nullable = false, length = 30)
+	@Column(name = "name",  length = 30)
 	public String getName()
 	{
 		return this.name;

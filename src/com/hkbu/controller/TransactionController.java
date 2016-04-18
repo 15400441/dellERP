@@ -44,6 +44,7 @@ public class TransactionController
 		try
 		{
 			bytes=ExcelUtils.generateExcel(list);
+			
 		
 		response.setContentType("application/x-msdownload");
         response.setHeader("Content-Disposition", "attachment;filename="  + "transactions.xlsx");

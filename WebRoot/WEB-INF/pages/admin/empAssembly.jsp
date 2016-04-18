@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div id="wrapper">
-		<%@ include file="nav.jsp"%>
+		<%@ include file="navForAssemblyEmp.jsp"%>
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<!-- Page Heading -->
@@ -43,7 +43,7 @@
 										<i class="fa fa-shopping-cart fa-5x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge" id="newOrderCount">${page.totalRecordsNum }</div>
+										<div class="huge" id="orderNeedAssemblyCount"></div>
 										<div>Orders need Assemble !</div>
 									</div>
 								</div>
@@ -65,8 +65,8 @@
 										<i class="fa fa-shopping-cart fa-5x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge">12</div>
-										<div>Finished Orders!</div>
+										<div class="huge" id="deliverOrderCount"></div>
+										<div>Delivering Orders!</div>
 									</div>
 								</div>
 							</div>
@@ -177,9 +177,35 @@
 <script src="${pageContext.request.contextPath}/assets/js/jqPaginator.js"></script>
 <script type="text/javascript">
    
+//ajax get new sOrders num
+$.get("/dellERP/sOrder/getCount.do?status=2", function(result)
+	{
+	  $("#deliverOrderCount").text(result.count);
+	  
+	});
+	
+$.get("/dellERP/sOrder/getCount.do?status=1", function(result)
+		{
+		  
+		  $("#orderNeedAssemblyCount").text(result.count);
+		});
    
    current=$('#pageNum').val();
 	totalPage=$('#totalPages').val(); 
+  
+   var status="${status}";
+  
+   if(2==status)
+	   {
+	   $("#showControl1").attr("class","hidden");
+	   $("#showControl2").attr("class","show");
+	   }
+   if(1==status)
+	   {
+	   $("#showControl1").attr("class","show");
+	   $("#showControl2").attr("class","hidden");
+	   }
+   
    $.jqPaginator('#pagination', {
        totalPages: eval(totalPage),
        visiblePages: 6,
@@ -197,20 +223,6 @@
            
        }  
    });
-   
-   
-   var status="${status}";
-  
-   if(2==status)
-	   {
-	   $("#showControl1").attr("class","hidden");
-	   $("#showControl2").attr("class","show");
-	   }
-   if(1==status)
-	   {
-	   $("#showControl1").attr("class","show");
-	   $("#showControl2").attr("class","hidden");
-	   }
    
    </script>
 </html>

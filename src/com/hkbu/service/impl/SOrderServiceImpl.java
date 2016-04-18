@@ -156,7 +156,7 @@ public class SOrderServiceImpl implements SOrderService
 		//generate transaction
 		Transaction transaction=new Transaction();
 		transaction.setType("sale");
-		transaction.setOrderUuid(sOrder.getUuid());
+		transaction.setsorderUuid(sOrder.getUuid());
 		transaction.setDate(new Date());
 		transaction.setCustomerUuid(customerUuid);
 		transaction.setMoneyIn(sOrder.getTotalPrice());

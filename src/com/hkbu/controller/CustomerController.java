@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.imageio.spi.RegisterableService;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -67,6 +68,24 @@ public class CustomerController
 		
 			return map;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/register")
+	public String register(Customer customer)
+	{
+		Customer c=customerService.getCustomerByUserName(customer.getUserName().trim());
+		if (c!=null)
+		{
+			return "The username already existed, please change to another one";
+		}
+		else 
+		{
+			customerService.register(customer);
+			return "Regist successfully";
+		}
+		
+	}
+	
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session)

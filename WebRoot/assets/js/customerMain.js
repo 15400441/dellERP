@@ -93,3 +93,23 @@ function loginAjax()
 	});
 
 }
+
+function register()
+{
+	var username = $("#username1").val();
+	var pwd = $("#password1").val().trim();
+	var pwd2 = $("#password_confirmation").val().trim();
+	if(pwd!=pwd2)
+		{
+		alert("passwords are not same");
+		return
+		}
+	$.get("/dellERP/customer/register.do?userName=" + username + "&pwd="
+			+ pwd, function(msg)
+	{
+		var message = msg;
+		if (message != null && message != "")
+			alert(message);
+	});
+	
+}

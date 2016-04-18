@@ -28,4 +28,12 @@ public class CustomerDaoImpl extends BaseDaoImpl<Customer> implements CustomerDa
 		return list.size()!=0? list.get(0):null;
 	}
 
+	@Override
+	public Customer getCustomerByUserName(String username)
+	{
+		String hql="from Customer where userName=?";
+		List<Customer> list= getHibernateTemplate().find(hql, username);
+		return list.size()!=0? list.get(0):null;
+	}
+
 }

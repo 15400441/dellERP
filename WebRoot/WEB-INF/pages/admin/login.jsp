@@ -22,7 +22,7 @@ html,body {
 	background-image:linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
 	background-image:-o-linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
 	background-image:-moz-linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
-	background-image:-webkit-linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
+	background-image:-webkit-linear-gradient(bottom, #747B88 0%, #365FAD 100%);
 	background-image:-ms-linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
 	
 	margin: 0 auto;
@@ -103,16 +103,16 @@ html,body {
 <div class="box">
 		<div class="login-box">
 			<div class="login-title text-center">
-				<h1><small>Login</small></h1>
+				<h1><small>Dell &nbsp EIS　Login</small></h1>
 			</div>
 			<div class="login-content ">
 			<div class="form">
 			<form action="${pageContext.request.contextPath}/emp/login.do" method="post">
 				<div class="form-group">
-					<div class="col-xs-12  ">
+					<div class="col-xs-12">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-							<input type="text" id="username" name="userName" class="form-control" placeholder="username">
+							<input type="text" id="username" name="userName" class="form-control" placeholder="username" required>
 						</div>
 					</div>
 				</div>
@@ -120,17 +120,12 @@ html,body {
 					<div class="col-xs-12  ">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-							<input type="password" id="password" name="pwd" class="form-control" placeholder="password">
+							<input type="password" id="password" name="pwd" class="form-control" placeholder="password" required>
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="col-xs-12  ">
-						<div class="input-group">
-							${msg }
-						</div>
-					</div>
-				</div>
+				
+				
 				<div class="form-group form-actions">
 					<div class="col-xs-4 col-xs-offset-4 ">
 						<button type="submit" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-off"></span>Login </button>
@@ -152,5 +147,12 @@ html,body {
 
 
 </body>
+
+<script>
+ var msg='${msg}';
+ if (msg!=null && msg.trim()!="")
+	 alert(msg);
+
+</script>
 
 </html>

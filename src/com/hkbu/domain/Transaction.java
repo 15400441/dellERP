@@ -21,7 +21,8 @@ public class Transaction implements java.io.Serializable
 
 	private Long uuid;
 	private Date date;
-	private Long orderUuid;
+	private Long sorderUuid;
+	private Long porderUuid;
 	private Long customerUuid;
 	private Float moneyIn;
 	private Float moneyOut;
@@ -43,11 +44,11 @@ public class Transaction implements java.io.Serializable
 	}
 
 	/** full constructor */
-	public Transaction(Long uuid, Date date, Long orderUuid, Long customerUuid, Float moneyIn, Float moneyOut, String type, Long supplierUuid)
+	public Transaction(Long uuid, Date date, Long sorderUuid, Long customerUuid, Float moneyIn, Float moneyOut, String type, Long supplierUuid)
 	{
 		this.uuid = uuid;
 		this.date = date;
-		this.orderUuid = orderUuid;
+		this.sorderUuid = sorderUuid;
 		this.customerUuid = customerUuid;
 		this.moneyIn = moneyIn;
 		this.moneyOut = moneyOut;
@@ -80,16 +81,27 @@ public class Transaction implements java.io.Serializable
 	{
 		this.date = date;
 	}
-
-	@Column(name = "orderUuid")
-	public Long getOrderUuid()
+	
+	@Column(name = "porderUuid")
+	public Long getporderUuid()
 	{
-		return this.orderUuid;
+		return this.porderUuid;
+	}
+	
+	public void setporderUuid(Long porderUuid)
+	{
+		this.porderUuid = porderUuid;
 	}
 
-	public void setOrderUuid(Long orderUuid)
+	@Column(name = "sorderUuid")
+	public Long getsorderUuid()
 	{
-		this.orderUuid = orderUuid;
+		return this.sorderUuid;
+	}
+
+	public void setsorderUuid(Long sorderUuid)
+	{
+		this.sorderUuid = sorderUuid;
 	}
 
 	@Column(name = "customerUuid")

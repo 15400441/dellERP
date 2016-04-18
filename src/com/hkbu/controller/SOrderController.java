@@ -55,11 +55,18 @@ public class SOrderController
 	}
 
 	@RequestMapping("getDetail")
-	public String getDetail(Long uuid, Model model)
+	public String getDetail(Long uuid, Model model, HttpSession session)
 	{
+		String role = (String) session.getAttribute("role");
 		List<Map<String, Object>> orderDetailViewList = sOrderService.getOrderDetailViewList(uuid);
 		model.addAttribute("orderDetailViewList", orderDetailViewList);
-		return "admin/sOrderDetail";
+		
+		if ("001".equals(role))
+			return "admin/sOrderDetail";
+		if ("002".equals(role))
+			return "admin/sOrderDetailForAssemblyEmp";
+		return null;
+		
 	}
 
 	@RequestMapping("assignOrder")

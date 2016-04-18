@@ -10,5 +10,9 @@ public interface CustomerService
 
 	Customer login(Customer customer);
 
+	Customer getCustomerByUserName(String name);
+
+	void register(Customer customer);
+
 	
 }

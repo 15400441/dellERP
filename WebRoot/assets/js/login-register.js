@@ -44,20 +44,7 @@ function openRegisterModal(){
     
 }
 
-function loginAjax(){
-    /*   Remove this comments when moving to server
-    $.post( "/login", function( data ) {
-            if(data == 1){
-                window.location.replace("/home");            
-            } else {
-                 shakeModal(); 
-            }
-        });
-    */
 
-/*   Simulate error message from the server   */
-     shakeModal();
-}
 
 function shakeModal(){
     $('#loginModal .modal-dialog').addClass('shake');

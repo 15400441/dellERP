@@ -21,11 +21,11 @@
 							<div class="content registerBox" style="display:none;">
 								<div class="form">
 									<form method="post" html="{:multipart=>true}" data-remote="true"  accept-charset="UTF-8">
-										<input id="username1" class="form-control" type="text" placeholder="username" name="username"> 
+										<input id="username1" class="form-control" type="text" placeholder="username" name="username" required> 
 										<input id="password1" class="form-control" type="password" placeholder="Password" name="password"> 
-										<input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation"> 
+										<input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" required name="password_confirmation"> 
 										<input class="btn btn-default btn-register"
-											type="submit" value="Create account" name="commit">
+											type="button" value="Create account" onclick="register()">
 									</form>
 								</div>
 							</div>

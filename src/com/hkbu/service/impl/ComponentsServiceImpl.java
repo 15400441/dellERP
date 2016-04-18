@@ -88,7 +88,7 @@ public class ComponentsServiceImpl implements ComponentsService
 		transaction.setType("buy");
 		transaction.setDate(new Date());
 		transaction.setMoneyOut(inPrice*num);
-		transaction.setOrderUuid(pOrder.getUuid());
+		transaction.setporderUuid(pOrder.getUuid());
 		transaction.setSupplierUuid(supplierUuid);
 		transactionDao.save(transaction);	
 	}

@@ -8,4 +8,6 @@ public interface CustomerDao extends BaseDao<Customer>
 
 	Customer getByUserNameAndPwd(Customer customer);
 
+	Customer getCustomerByUserName(String username);
+
 }

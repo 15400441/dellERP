@@ -38,21 +38,19 @@
 
 
 	<!--拦截器 -->
-	
-	<!-- <mvc:interceptors>
-		多个拦截器,顺序执行
-		登陆认证拦截器
+	<!--  
+    <mvc:interceptors>
+		
 		
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/css/**" />
-			<mvc:exclude-mapping path="/js/**" />
-			<mvc:exclude-mapping path="/images/**" />
+			<mvc:exclude-mapping path="/assets/**" />
 	    	<bean class="com.hkbu.interceptor.LoginInterceptor"></bean>  
 		</mvc:interceptor>
 		
-	</mvc:interceptors> -->
+	</mvc:interceptors> 
+	-->
 
 
 </beans>

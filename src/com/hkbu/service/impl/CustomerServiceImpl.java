@@ -34,4 +34,19 @@ public class CustomerServiceImpl implements CustomerService
 		return customerDao.getByUserNameAndPwd(customer);
 	}
 
+	@Override
+	public Customer getCustomerByUserName(String username)
+	{
+		return customerDao.getCustomerByUserName(username);
+		
+	}
+
+	@Override
+	public void register(Customer customer)
+	{
+		customer.setPwd(MD5Utils.md5(customer.getPwd()));
+		customerDao.save(customer);
+		
+	}
+
 }
