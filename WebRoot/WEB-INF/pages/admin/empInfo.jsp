@@ -31,114 +31,109 @@
 					</div>
 				</div>
 				<div class="show" id="control1">
-				<div class="row">
-					<div class="form-group">
-						<form action="${pageContext.request.contextPath}/emp/empUpdate.do" id="searchForm" class="form-horizontal" method="post">
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Department</label>
-								<div class="col-sm-10">
-									<select class="form-control" name="depUuid" style="width:50%;display:inline" id="depSelect">
-										
-										<c:forEach items="${depList }" var="d">
-											<option value="${ d.uuid}">${ d.name}</option>
-										</c:forEach>
-									</select>
+					<div class="row">
+						<div class="form-group">
+							<form action="${pageContext.request.contextPath}/emp/empUpdate.do" id="searchForm" class="form-horizontal" method="post">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Department</label>
+									<div class="col-sm-10">
+										<select class="form-control" name="depUuid" style="width:50%;display:inline" id="depSelect">
+											<c:forEach items="${depList }" var="d">
+												<option value="${ d.uuid}">${ d.name}</option>
+											</c:forEach>
+										</select>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Name</label>
-								<div class="col-sm-10">
-									<input name="name" type="text" value="${updateEmp.name }" class="form-control" style="width:50%; display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Name</label>
+									<div class="col-sm-10">
+										<input name="name" type="text" value="${updateEmp.name }" class="form-control" style="width:50%; display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Employ Num</label>
-								<div class="col-sm-10">
-									<input name="empNum" type="text" value="${updateEmp.empNum }" class="form-control" style="width:50%;display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Employ Num</label>
+									<div class="col-sm-10">
+										<input name="empNum" type="text" value="${updateEmp.empNum }" class="form-control" style="width:50%;display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Username</label>
-								<div class="col-sm-10">
-									<input name="userName" required type="text" value="${updateEmp.userName }" class="form-control" style="width:50%;display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Username</label>
+									<div class="col-sm-10">
+										<input name="userName" required type="text" value="${updateEmp.userName }" class="form-control" style="width:50%;display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Password</label>
-								<div class="col-sm-10">
-									<input name="pwd" required type="password" value="originalPwd" class="form-control" style="width:50%;display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Password</label>
+									<div class="col-sm-10">
+										<input name="pwd" required type="password" value="originalPwd" class="form-control" style="width:50%;display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Salary</label>
-								<div class="col-sm-10">
-									<input name="salary" type="text" value="${updateEmp.salary }" class="form-control" style="width:50%;display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Salary</label>
+									<div class="col-sm-10">
+										<input name="salary" type="text" value="${updateEmp.salary }" class="form-control" style="width:50%;display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-primary">update</button>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="submit" class="btn btn-primary">update</button>
+									</div>
 								</div>
-							</div>
-							<input name="uuid" type="hidden" value="${updateEmp.uuid }">							
-						</form>
+								<input name="uuid" type="hidden" value="${updateEmp.uuid }">
+							</form>
+						</div>
 					</div>
 				</div>
-				</div>
 				<!-- /.row -->
-				
 				<!-- the part for add new employe -->
 				<div class="hidden" id="control2">
-				<div class="row">
-					<div class="form-group">
-						<form action="${pageContext.request.contextPath}/emp/empAdd.do"  class="form-horizontal" method="post">
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Department</label>
-								<div class="col-sm-10">
-									<select class="form-control" name="depUuid" style="width:50%;display:inline" id="depSelect">
-										
-										<c:forEach items="${depList }" var="d">
-											<option value="${ d.uuid}">${ d.name}</option>
-										</c:forEach>
-									</select>
+					<div class="row">
+						<div class="form-group">
+							<form action="${pageContext.request.contextPath}/emp/empAdd.do" class="form-horizontal" method="post">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Department</label>
+									<div class="col-sm-10">
+										<select class="form-control" name="depUuid" style="width:50%;display:inline" id="depSelect">
+											<c:forEach items="${depList }" var="d">
+												<option value="${ d.uuid}">${ d.name}</option>
+											</c:forEach>
+										</select>
+									</div>
 								</div>
-							</div>
-							
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Employ Num</label>
-								<div class="col-sm-10">
-									<input name="empNum" type="text" value="" class="form-control" style="width:50%;display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Employ Num</label>
+									<div class="col-sm-10">
+										<input name="empNum" type="text" value="" class="form-control" style="width:50%;display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Username</label>
-								<div class="col-sm-10">
-									<input name="userName" required type="text" value="" class="form-control" style="width:50%;display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Username</label>
+									<div class="col-sm-10">
+										<input name="userName" required type="text" value="" class="form-control" style="width:50%;display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Password</label>
-								<div class="col-sm-10">
-									<input name="pwd" required type="password" value="" class="form-control" style="width:50%;display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Password</label>
+									<div class="col-sm-10">
+										<input name="pwd" required type="password" value="" class="form-control" style="width:50%;display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Salary</label>
-								<div class="col-sm-10">
-									<input name="salary" type="text" value="" class="form-control" style="width:50%;display:inline">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Salary</label>
+									<div class="col-sm-10">
+										<input name="salary" type="text" value="" class="form-control" style="width:50%;display:inline">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-primary">Add</button>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="submit" class="btn btn-primary">Add</button>
+									</div>
 								</div>
-							</div>
-														
-						</form>
+							</form>
+						</div>
 					</div>
+					<!-- /.row -->
 				</div>
-				<!-- /.row -->
-			</div>
 			</div>
 			<!-- /.container-fluid -->
 		</div>
@@ -153,20 +148,19 @@
 <!-- Morris Charts JavaScript -->
 <script src="${pageContext.request.contextPath}/assets/js/jqPaginator.js"></script>
 <script type="text/javascript">
-       var depUuid="${updateEmp.depUuid}"
-	   if(depUuid!=null&&depUuid!="")
-		   $("#depSelect").val(depUuid);
-  
-       var msg="${msg}";
-       if(msg!=null&&msg!="")
-    	   alert(msg);
-       
-       var add="${add}"
-       if(add=="add")
-    	   {
-    	   $("#control1").attr("class","hidden");
-    	   $("#control2").attr("class","show");
-    	   }
-   
-   </script>
+	var depUuid = "${updateEmp.depUuid}"
+	if (depUuid != null && depUuid != "")
+		$("#depSelect").val(depUuid);
+
+	var msg = "${msg}";
+	if (msg != null && msg != "")
+		alert(msg);
+
+	var add = "${add}"
+	if (add == "add")
+	{
+		$("#control1").attr("class", "hidden");
+		$("#control2").attr("class", "show");
+	}
+</script>
 </html>

@@ -28,68 +28,59 @@
 				<div class="row">
 					<div class="form-group">
 						<form action="${pageContext.request.contextPath}/emp/getEmpList.do" id="searchForm" method="post">
-						    Department:<select class="form-control" name="depUuid" style="width:20%; display:inline" id="depSelect">
-						    <option value="">All</option>
-						    <c:forEach items="${depList }" var="d">
-						    <option value="${ d.uuid}">${ d.name}</option>
-						    </c:forEach>
-						    </select>
-							Name:<input name="name" type="text" value="${searchEmp.name }" class="form-control" style="width:20%; display:inline"> 
-							Employ Num:<input name="empNum" type="text" value="${searchEmp.empNum }" class="form-control" style="width:20%; display:inline"> 
-							<input name="pageNum" id="pageNum" type="hidden" value="${page.currentPageNum }">
-                            <input id="totalPages" type="hidden" value="${page.totalPageSize }">
-							<button type="submit" class="btn btn-primary">Search</button>  <a href="${pageContext.request.contextPath}/emp/empAddUI.do" class="btn btn-primary">Add</a>
-							
+							Department:<select class="form-control" name="depUuid" style="width:20%; display:inline" id="depSelect">
+								<option value="">All</option>
+								<c:forEach items="${depList }" var="d">
+									<option value="${ d.uuid}">${ d.name}</option>
+								</c:forEach>
+							</select> Name:<input name="name" type="text" value="${searchEmp.name }" class="form-control" style="width:20%; display:inline"> Employ Num:<input name="empNum" type="text" value="${searchEmp.empNum }" class="form-control" style="width:20%; display:inline"> <input name="pageNum" id="pageNum" type="hidden" value="${page.currentPageNum }"> <input id="totalPages" type="hidden"
+								value="${page.totalPageSize }">
+							<button type="submit" class="btn btn-primary">Search</button>
+							<a href="${pageContext.request.contextPath}/emp/empAddUI.do" class="btn btn-primary">Add</a>
 						</form>
 					</div>
 				</div>
-				
-				
 				<!-- /.row -->
-				
-				
-					<div class="row">
-						<div class="col-lg-11">
-							<h2>Employees</h2>
-							
-							<div class="table-responsive">
-								<table class="table table-bordered table-hover table-striped">
-									<thead>
+				<div class="row">
+					<div class="col-lg-11">
+						<h2>Employees</h2>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-striped">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Gender</th>
+										<th>Employe num</th>
+										<th>Email</th>
+										<th>Salary</th>
+										<th>Birthday</th>
+										<th>Address</th>
+										<th>Update</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${page.records}" var="e">
 										<tr>
-											<th>Name</th>
-											<th>Gender</th>
-											<th>Employe num</th>
-											<th>Email</th>
-											<th>Salary</th>
-											<th>Birthday</th>
-											<th>Address</th>	
-											<th>Update</th>	
-											<th>Delete</th>									
+											<td>${e.name }</td>
+											<td>${e.genderView }</td>
+											<td>${e.empNum }</td>
+											<td>${e.email }</td>
+											<td>${e.salary }</td>
+											<td>${e.birthday }</td>
+											<td>${e.address }</td>
+											<td><a href="${pageContext.request.contextPath}/emp/empUpdateUI.do?uuid=${e.uuid}">update</a>
+											</td>
+											<td><a href="${pageContext.request.contextPath}/emp/empDelete.do?uuid=${e.uuid}">delete</a>
+											</td>
 										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${page.records}" var="e">
-											<tr>
-												<td>${e.name }</td>
-												<td>${e.genderView }</td>
-												<td>${e.empNum }</td>
-												<td>${e.email }</td>
-												<td>${e.salary }</td>
-												<td>${e.birthday }</td>
-												<td>${e.address }</td>
-												<td><a href="${pageContext.request.contextPath}/emp/empUpdateUI.do?uuid=${e.uuid}">update</a></td>
-												<td><a href="${pageContext.request.contextPath}/emp/empDelete.do?uuid=${e.uuid}">delete</a></td>
-												
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 					</div>
-				
+				</div>
 				<!-- /.row -->
-				
 				<ul id="pagination" class="pagination"></ul>
 			</div>
 			<!-- /.container-fluid -->

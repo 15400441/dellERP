@@ -27,6 +27,7 @@ public class EmpDaoImpl extends BaseDaoImpl<Emp> implements EmpDao
 			dc.add(Restrictions.like("name", "%"+eqm.getName()+"%"));
 		if(eqm.getEmpNum()!=null&&!eqm.getEmpNum().trim().equals(""))
 			dc.add(Restrictions.eq("empNum", eqm.getEmpNum()));
+		dc.add(Restrictions.eq("status", 1));
 		dc.addOrder(Order.asc("depUuid"));
 		
 		

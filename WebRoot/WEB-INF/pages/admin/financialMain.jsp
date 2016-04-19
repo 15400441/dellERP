@@ -29,69 +29,54 @@
 				<div class="row">
 					<div class="form-group">
 						<form action="${pageContext.request.contextPath}/transaction/getTransactionList.do" id="searchForm" method="post">
-						
-						    Type:<select class="form-control" name="type" style="width:20%; display:inline" id="typeSelect">
-						    <option value="">All</option>
-						    <option value="sale">Sale</option>
-						    <option value="buy">Buy</option>						    
-						    </select>
-							Start Date:<input name="startDate" id="datetimepicker1" type="text" value="${searchEmp.name }" class="form-control" style="width:20%; display:inline"> 
-							End Date:<input name="endDate" id="datetimepicker2" type="text" value="${searchEmp.empNum }" class="form-control" style="width:20%; display:inline"> 
-							<input name="pageNum" id="pageNum" type="hidden" value="${page.currentPageNum }">
-                            <input id="totalPages" type="hidden" value="${page.totalPageSize }">
-							<button type="submit" class="btn btn-primary">Search</button>  
-							
+							Type:<select class="form-control" name="type" style="width:20%; display:inline" id="typeSelect">
+								<option value="">All</option>
+								<option value="sale">Sale</option>
+								<option value="buy">Buy</option>
+							</select> Start Date:<input name="startDate" id="datetimepicker1" type="text" value="${searchEmp.name }" class="form-control" style="width:20%; display:inline"> End Date:<input name="endDate" id="datetimepicker2" type="text" value="${searchEmp.empNum }" class="form-control" style="width:20%; display:inline"> <input name="pageNum" id="pageNum" type="hidden"
+								value="${page.currentPageNum }"> <input id="totalPages" type="hidden" value="${page.totalPageSize }">
+							<button type="submit" class="btn btn-primary">Search</button>
 						</form>
 					</div>
 				</div>
-				
-				
 				<!-- /.row -->
-				
 				<div id="showControl1" class="show">
-				<div class="row">
-					<div class="col-lg-10">
-					    
-						<h2>Transactions</h2>
-						<a href="${pageContext.request.contextPath}/transaction/downloadTransactions.do">download this month transactions</a>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th>Transaction ID</th>
-										<th>Transaction type </th>
-										<th>Income</th>
-										<th>Expense</th>
-										<th>Date</th>
-										<th>Detail</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${page.records}" var="t">
+					<div class="row">
+						<div class="col-lg-10">
+							<h2>Transactions</h2>
+							<a href="${pageContext.request.contextPath}/transaction/downloadTransactions.do">download this month transactions</a>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
 										<tr>
-											<td>${t.uuid }</td>
-											<td>${t.type }</td>
-											<td>${t.moneyIn }</td>
-											<td>${t.moneyOut }</td>
-											<td>${t.date }</td>
-											<td><a href="#">detail</a>
-											</td>
+											<th>Transaction ID</th>
+											<th>Transaction type</th>
+											<th>Income</th>
+											<th>Expense</th>
+											<th>Date</th>
+											<th>Detail</th>
 										</tr>
-									</c:forEach>
-									
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<c:forEach items="${page.records}" var="t">
+											<tr>
+												<td>${t.uuid }</td>
+												<td>${t.type }</td>
+												<td>${t.moneyIn }</td>
+												<td>${t.moneyOut }</td>
+												<td>${t.date }</td>
+												<td><a href="#">detail</a></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-				</div>
 				<!-- /.row -->
-				
-				<div id="showControl2" class="hidden">
-				
-				</div>
+				<div id="showControl2" class="hidden"></div>
 				<!-- /.row -->
-				
 				<form action="${pageContext.request.contextPath}/sOrder/orderList.do" id="searchForm">
 					<input name="status" type="hidden" value="1"> <input name="empUuid" type="hidden" value="${loginEmp.uuid }"> <input name="pageNum" id="pageNum" type="hidden" value="${page.currentPageNum }"> <input id="totalPages" type="hidden" value="${page.totalPageSize }">
 				</form>

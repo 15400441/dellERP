@@ -19,57 +19,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	<div class="well well-lg">
-		<h1>
-			My home
-		</h1>
+		<h1>My home</h1>
 	</div>
-		
-		
-		
-				<div class="row">
-					<div class="col-lg-12">
-						<h2 class="orderStatus">My orders</h2>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th>Order num</th>
-										<th>Start Time</th>
-										<th>End Time</th>
-										<th>Total price</th>						
-										<th>Description</th>
-										<th>Status</th>
-										<th>Confirm goods receipt</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${sOrderList}" var="o">
-										<tr>
-											<td>${o.orderNum }</td>
-											<td>${o.startTime }</td>
-											<td>${o.endTime }</td>
-											<td>${o.totalPrice }</td>
-											
-											<td>${o.des }</td>
-											<td class="finished">${o.statusView }</td>
-											<td><a href="${pageContext.request.contextPath}/sOrder/confirmOrder?uuid=${o.uuid}">confirm</a>
-											</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-				
-			
-		
-		<!-- jQuery -->
-		<script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
-		<!-- Bootstrap Core JavaScript -->
-		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-		
-		<script type="text/javascript">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2 class="orderStatus">My orders</h2>
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover table-striped">
+					<thead>
+						<tr>
+							<th>Order num</th>
+							<th>Start Time</th>
+							<th>End Time</th>
+							<th>Total price</th>
+							<th>Description</th>
+							<th>Status</th>
+							<th>Confirm goods receipt</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${sOrderList}" var="o">
+							<tr>
+								<td>${o.orderNum }</td>
+								<td>${o.startTime }</td>
+								<td>${o.endTime }</td>
+								<td>${o.totalPrice }</td>
+								<td>${o.des }</td>
+								<td class="finished">${o.statusView }</td>
+								<td><a href="${pageContext.request.contextPath}/sOrder/confirmOrder?uuid=${o.uuid}">confirm</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- jQuery -->
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
     
 		var msg='${msg}';
 		if(msg!=null && msg!="" )

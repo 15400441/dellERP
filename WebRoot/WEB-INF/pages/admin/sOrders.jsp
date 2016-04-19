@@ -32,125 +32,113 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-lg-12">
 						<h1 class="page-header">Orders</h1>
 						<ol class="breadcrumb">
-							<li><i class="fa fa-dashboard"></i> <a href="index.html">Home</a>
+							<li><i class="fa fa-dashboard"></i> <a href="index.html">Home</a></li>
+							<li class="active"><i class="fa fa-table"></i>
+							<lable class="orderStatus"> New orders</lable>
 							</li>
-							<li class="active"><i class="fa fa-table"></i><lable class="orderStatus"> New orders</lable></li>
 						</ol>
 					</div>
 				</div>
 				<!-- /.row -->
-				
 				<!-- for new orders -->
 				<div class="show" id="showControl1">
-				<div class="row">
-					<div class="col-lg-10">
-						<h2>New orders</h2>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th>Order num</th>
-										<th>Start Time</th>
-										<th>Total price</th>
-										<th>Customer id</th>
-										<th>Detail</th>
-										<th>Assign task</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${page.records }" var="o">
+					<div class="row">
+						<div class="col-lg-10">
+							<h2>New orders</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
 										<tr>
-											<td>${o.orderNum }</td>
-											<td>${o.startTime }</td>
-											<td>${o.totalPrice }</td>
-											<td>${o.customerUuid }</td>
-											<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a></td>
-											<td><a href="javascript:showStaffs(${o.uuid })" >assign</a></td>
+											<th>Order num</th>
+											<th>Start Time</th>
+											<th>Total price</th>
+											<th>Customer id</th>
+											<th>Detail</th>
+											<th>Assign task</th>
 										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<c:forEach items="${page.records }" var="o">
+											<tr>
+												<td>${o.orderNum }</td>
+												<td>${o.startTime }</td>
+												<td>${o.totalPrice }</td>
+												<td>${o.customerUuid }</td>
+												<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a>
+												</td>
+												<td><a href="javascript:showStaffs(${o.uuid })">assign</a>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
+					<!-- /.row -->
 				</div>
-				
-				
-				<!-- /.row -->
-				</div>
-				
 				<!-- for not new orders  -->
 				<div id="showControl2" class="hidden">
-				<div class="row">
-					<div class="col-lg-10">
-						<h2 class="orderStatus"></h2>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th>Order num</th>
-										<th>Start Time</th>
-										<th>Total price</th>
-										<th>Components needed</th>
-										<th>Description</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${page.records}" var="o">
+					<div class="row">
+						<div class="col-lg-10">
+							<h2 class="orderStatus"></h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
 										<tr>
-											<td>${o.orderNum }</td>
-											<td>${o.startTime }</td>
-											<td>${o.totalPrice }</td>
-											<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a>
-											</td>
-											<td>${o.des }</td>
-											<td>${o.statusView }</td>
+											<th>Order num</th>
+											<th>Start Time</th>
+											<th>Total price</th>
+											<th>Components needed</th>
+											<th>Description</th>
+											<th>Status</th>
 										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<c:forEach items="${page.records}" var="o">
+											<tr>
+												<td>${o.orderNum }</td>
+												<td>${o.startTime }</td>
+												<td>${o.totalPrice }</td>
+												<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a></td>
+												<td>${o.des }</td>
+												<td>${o.statusView }</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-				</div>
-				
 				<form action="${pageContext.request.contextPath}/sOrder/orderList.do" id="searchForm">
 					<input name="status" type="hidden" value="0"> <input name="pageNum" id="pageNum" type="hidden" value="${page.currentPageNum }"> <input id="totalPages" type="hidden" value="${page.totalPageSize }">
 				</form>
-				
 				<ul id="pagination" class="pagination"></ul>
-				
 				<!-- 模态框（Modal） -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								<h4 class="modal-title" id="myModalLabel">Avaiable assembly department staffs  </h4>
+								<h4 class="modal-title" id="myModalLabel">Avaiable assembly department staffs</h4>
 							</div>
 							<div class="modal-body">
-							
-							<form action="${pageContext.request.contextPath}/sOrder/assignOrder.do">
-							<input type="hidden"  name="orderUuid" value="" id="orderUuid">
-							<table id="table">
-					
-							</table>
-							
-							
+								<form action="${pageContext.request.contextPath}/sOrder/assignOrder.do">
+									<input type="hidden" name="orderUuid" value="" id="orderUuid">
+									<table id="table">
+									</table>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
 								<button type="submit" class="btn btn-primary">submit</button>
 							</div>
 							</form>
-							
 						</div>
 						<!-- /.modal-content -->
 					</div>
 					<!-- /.modal -->
 				</div>
-				
-				
 				<!-- /.container-fluid -->
 			</div>
 			<!-- /#page-wrapper -->

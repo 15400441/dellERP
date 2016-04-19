@@ -33,9 +33,9 @@ public class EmpController
 	private EmpService empService;
 	@Resource(name = "sOrderService")
 	private SOrderService sOrderService;
-	@Resource(name="depService")
+	@Resource(name = "depService")
 	private DepService depService;
-	@Resource(name="transactionService")
+	@Resource(name = "transactionService")
 	private TransactionService transactionService;
 
 	@RequestMapping("/login")
@@ -45,11 +45,11 @@ public class EmpController
 		Emp loginEmp = (Emp) session.getAttribute("loginEmp");
 		if (loginEmp != null)
 		{
-			String loginRole=(String) session.getAttribute("role");
-			//for order manager
+			String loginRole = (String) session.getAttribute("role");
+			// for order manager
 			if ("001".equals(loginRole))
 				return "admin/main";
-			//for Assembly department employee
+			// for Assembly department employee
 			if ("002".equals(loginRole))
 			{
 				int status = 1;
@@ -60,25 +60,25 @@ public class EmpController
 				model.addAttribute("page", page);
 				return "admin/empAssembly";
 			}
-			//for Human Resources department manager
+			// for Human Resources department manager
 			if ("003".equals(loginRole))
 			{
-				
+
 				return "forward:/emp/getEmpList.do";
 			}
-			//for financial department manager
+			// for financial department manager
 			if ("004".equals(loginRole))
 			{
-				//get transactions
-				int totalCount=transactionService.getCount(new Transaction(),null,null);
-				Page<Transaction> page=transactionService.getTransactionList(new Transaction(),1,totalCount,null,null);
-				model.addAttribute("page",page);
+				// get transactions
+				int totalCount = transactionService.getCount(new Transaction(), null, null);
+				Page<Transaction> page = transactionService.getTransactionList(new Transaction(), 1, totalCount, null, null);
+				model.addAttribute("page", page);
 				return "admin/financialMain";
 			}
-			
+
 		}
 
-		if(emp.getPwd()==null)
+		if (emp.getPwd() == null)
 		{
 			return "forward:/ui/empLoginUI.do";
 		}
@@ -87,9 +87,9 @@ public class EmpController
 		{
 			model.addAttribute("msg", "username or password wrong");
 			return "forward:/ui/empLoginUI.do";
-		} 
-		
-		//username and password are right
+		}
+
+		// username and password are right
 		else
 		{
 
@@ -107,13 +107,13 @@ public class EmpController
 			List<Map<String, Object>> roleList = empService.getRoleList(loginEmp.getUuid());
 			for (Map map : roleList)
 			{
-				//for order manager
+				// for order manager
 				if ("001".equals(map.get("code")))
 				{
 					session.setAttribute("role", "001");
 					return "admin/main";
 				}
-				//for aeeembly department employes
+				// for aeeembly department employes
 				if ("002".equals(map.get("code")))
 				{
 					session.setAttribute("role", "002");
@@ -126,21 +126,21 @@ public class EmpController
 					model.addAttribute("page", page);
 					return "admin/empAssembly";
 				}
-				//for Human Resources department manager
+				// for Human Resources department manager
 				if ("003".equals(map.get("code")))
 				{
 					session.setAttribute("role", "003");
 					return "forward:/emp/getEmpList.do";
 				}
-				//for financial department manager
+				// for financial department manager
 				if ("004".equals(map.get("code")))
 				{
 					session.setAttribute("role", "004");
-					int totalCount=transactionService.getCount(new Transaction(),null,null);
-					Page<Transaction> page=transactionService.getTransactionList(new Transaction(),1,totalCount,null,null);
-					model.addAttribute("page",page);
+					int totalCount = transactionService.getCount(new Transaction(), null, null);
+					Page<Transaction> page = transactionService.getTransactionList(new Transaction(), 1, totalCount, null, null);
+					model.addAttribute("page", page);
 					return "admin/financialMain";
-					
+
 				}
 			}
 
@@ -149,11 +149,11 @@ public class EmpController
 		}
 
 	}
-	
+
 	@RequestMapping("/changeSorderStatus")
-	public String changeSOrderStatus(Long uuid,int status,Model model)
+	public String changeSOrderStatus(Long uuid, int status, Model model)
 	{
-		sOrderService.update(uuid,status);
+		sOrderService.update(uuid, status);
 		return "forward:/emp/login.do";
 	}
 
@@ -164,84 +164,80 @@ public class EmpController
 		session.invalidate();
 		return "forward:/ui/empLoginUI.do";
 	}
-	
+
 	@RequestMapping("/getEmpList")
-	public  String getEmpList(Emp emp, Integer pageNum,Model model,HttpSession session)
+	public String getEmpList(Emp emp, Integer pageNum, Model model, HttpSession session)
 	{
-		//get department
-		List<Dep> depList=depService.getAll();
-		
+		// get department
+		List<Dep> depList = depService.getAll();
+
 		session.setAttribute("searchEmp", emp);
-		if(pageNum==null || pageNum==0)
-			pageNum=1;
+		if (pageNum == null || pageNum == 0)
+			pageNum = 1;
 		int totalCount = empService.getCount(emp);
 		Page page = new Page<List<Map<String, Object>>>(5, pageNum, totalCount);
 		List<Emp> list = empService.getEmpList(emp, pageNum, page.getPageSize());
 		page.setRecords(list);
-		model.addAttribute("depList",depList);
+		model.addAttribute("depList", depList);
 		model.addAttribute("page", page);
 		return "admin/humanResourcesMain";
 	}
-	
-	
+
 	@RequestMapping("/empUpdateUI")
-	public String empUpdateUI(Long uuid,Model model)
+	public String empUpdateUI(Long uuid, Model model)
 	{
-		Emp emp=empService.findEmp(uuid);
-		List<Dep> depList=depService.getAll();
-		
+		Emp emp = empService.findEmp(uuid);
+		List<Dep> depList = depService.getAll();
+
 		model.addAttribute("depList", depList);
 		model.addAttribute("updateEmp", emp);
 		return "admin/empInfo";
 	}
-	
+
 	@RequestMapping("/empUpdate")
-	public String empUpdate(Emp emp,Model model)
+	public String empUpdate(Emp emp, Model model)
 	{
 		empService.updateEmp(emp);
 		model.addAttribute("msg", "update successfully");
 		return empUpdateUI(emp.getUuid(), model);
 	}
-	
+
 	@RequestMapping("/empAddUI")
 	public String empAddUI(Model model)
 	{
-		
-		List<Dep> depList=depService.getAll();		
+
+		List<Dep> depList = depService.getAll();
 		model.addAttribute("depList", depList);
 		model.addAttribute("add", "add");
-		return "admin/empInfo"; 
+		return "admin/empInfo";
 	}
-	
-	
+
 	@RequestMapping("/empAdd")
-	public String empAdd(Emp emp,Model model)
+	public String empAdd(Emp emp, Model model)
 	{
 		empService.add(emp);
 		model.addAttribute("msg", "add successfully");
 		return "forward:/emp/getEmpList.do";
 	}
-	
+
 	@RequestMapping("/empDelete")
-	public String empDelete(Long uuid,Model model)
+	public String empDelete(Long uuid, Model model)
 	{
 		empService.deleteEmp(uuid);
 		model.addAttribute("msg", "delete successfully");
 		return "forward:/emp/getEmpList.do";
 	}
-	
-	
-	
-	//ajax------------------------------------------------------------
+
+	// ajax------------------------------------------------------------
 	@ResponseBody
 	@RequestMapping("/getEmpInfo")
 	public List<Map<String, Object>> getEmpInfo(Integer pageNum, Integer pageSize)
 	{
-		if(null==pageNum)
-			pageNum=1;
-		Result<Map<String, Object>> result=new Result<Map<String,Object>>();
-		List<Map<String, Object>> rows= empService.getEmpInfo();
-		Map<String, Object> map=new HashMap<String, Object>();
+		if (null == pageNum)
+			pageNum = 1;
+		Result<Map<String, Object>> result = new Result<Map<String, Object>>();
+		List<Map<String, Object>> rows = empService.getEmpInfo();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pageNum", pageNum);
 		result.setMap(map);
 		result.setRows(rows);

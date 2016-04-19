@@ -7,6 +7,6 @@
 
 </head>
 <body style="background:#fff3e1;">
-	404,您访问的页面不存在，请输入正确的URL
+	404,Sorry the page you try to acessed is not existed, please input correct URL
 </body>
 </html>

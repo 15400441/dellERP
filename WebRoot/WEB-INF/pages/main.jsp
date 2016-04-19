@@ -15,7 +15,7 @@
 	<%@ include file="popLogin.jsp"%>
 	<div class="well well-lg">
 		<h1>
-			 Wellcome to our DELLERP system <small>Pick whatever you want </small>
+			Wellcome to our DELLERP system <small>Pick whatever you want </small>
 		</h1>
 	</div>
 	<nav class="navbar navbar-default">
@@ -30,15 +30,13 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">New <span class="sr-only">(current)</span> </a>
+					<li class="active"><a href="#">New <span class="sr-only">(current)</span> </a></li>
+					<li id="login"><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a>
 					</li>
-					<li id="login"><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a></li>
-					<li id="regist"><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a>
-					</li>
-					<li class="hidden" id="home"><a id="goHome" data-toggle="modal" href="${pageContext.request.contextPath}/sOrder/getOrderListByCustomerUuid.do" >Home of <span id="customerUsername">${customer.userName}</span></a>
-					</li>
-					<li class="hidden" id="logout"><a id="goHome" data-toggle="modal" href="${pageContext.request.contextPath}/customer/logout.do" >Logout</a>
-					</li>
+					<li id="regist"><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a></li>
+					<li class="hidden" id="home"><a id="goHome" data-toggle="modal" href="${pageContext.request.contextPath}/sOrder/getOrderListByCustomerUuid.do">Home of <span id="customerUsername">${customer.userName}</span>
+					</a></li>
+					<li class="hidden" id="logout"><a id="goHome" data-toggle="modal" href="${pageContext.request.contextPath}/customer/logout.do">Logout</a></li>
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group">
@@ -74,34 +72,30 @@
 				</div>
 				<div class="panel-body">
 					<div class="col-md-12">
-					<form action="${pageContext.request.contextPath}/sOrder/generateOrder.do" method="post">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Component</th>
-									<th>Name</th>
-									<th>Number</th>
-									<th>Operation</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${componentsTypeList}" var="ct">
+						<form action="${pageContext.request.contextPath}/sOrder/generateOrder.do" method="post">
+							<table class="table">
+								<thead>
 									<tr>
-										<td>${ct.name }</td>
-										<td id="${ct.uuid }"></td>
-										<td><input name="num" type="text" value="0" class="form-control" style="width:60px;">
-										    <input name="uuid" type="hidden"  class="form-control" id="${ct.uuid }para" >										
-										</td>
-										<td><a href="#"><span class="glyphicon glyphicon-remove"></span>
-										</a>
-										</td>
+										<th>Component</th>
+										<th>Name</th>
+										<th>Number</th>
+										<th>Operation</th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<div class="col-md-12">
-							<button type="submit" class="btn btn-info" class="col-md-offset-1">Submit Order</button>
-						</div>
+								</thead>
+								<tbody>
+									<c:forEach items="${componentsTypeList}" var="ct">
+										<tr>
+											<td>${ct.name }</td>
+											<td id="${ct.uuid }"></td>
+											<td><input name="num" type="text" value="0" class="form-control" style="width:60px;"> <input name="uuid" type="hidden" class="form-control" id="${ct.uuid }para"></td>
+											<td><a href="#"><span class="glyphicon glyphicon-remove"></span> </a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<div class="col-md-12">
+								<button type="submit" class="btn btn-info" class="col-md-offset-1">Submit Order</button>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -111,19 +105,16 @@
 			<div class="panel panel-default" class="col-md-12">
 				<div class="panel-heading">Product list</div>
 				<div class="panel-body">
-					<table id="showComponents" class="table" >
+					<table id="showComponents" class="table">
 						<thead>
 							<tr>
 								<th data-field="uuid" data-formatter="imgFormatter">Picture</th>
-								<th data-field="name" data-formatter="nameFormatter"> Name</th>
-								<th data-field="outPrice" > Price</th>
-								<th data-field="uuid"  data-formatter="buttonFormatter"> </th>
-							
+								<th data-field="name" data-formatter="nameFormatter">Name</th>
+								<th data-field="outPrice">Price</th>
+								<th data-field="uuid" data-formatter="buttonFormatter"></th>
 							</tr>
 						</thead>
-						
 					</table>
-					
 				</div>
 			</div>
 		</div>
@@ -131,7 +122,8 @@
 	<div class="hidden" id="msg">${info }</div>
 	<div class="well">
 		<div class="panel-head">
-			<li><a href="#">Contact Us</a> <a href="#" class="col-md-offset-1">Feedback</a> <a href="#" class="col-md-offset-1">Others</a></li> Design by XXX 2016@CopyRight
+			<li><a href="#">Contact Us</a> <a href="#" class="col-md-offset-1">Feedback</a> <a href="#" class="col-md-offset-1">Others</a>
+			</li> Design by XXX 2016@CopyRight
 		</div>
 	</div>
 </body>

@@ -34,7 +34,7 @@ public class MD5Utils
 
 	public static void main(String[] args)
 	{
-		System.out.println(md5("b"));
+		System.out.println(md5("test"));
 	}
 
 }

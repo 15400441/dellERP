@@ -106,7 +106,7 @@ public class EmpServiceImpl implements EmpService
 	public void add(Emp emp)
 	{
 		emp.setPwd(MD5Utils.md5(emp.getPwd()));
-		
+		emp.setStatus(1);
 		empDao.save(emp);
 		
 	}
@@ -114,8 +114,9 @@ public class EmpServiceImpl implements EmpService
 	@Override
 	public void deleteEmp(Long uuid)
 	{
+		//not physically delete the emp
 		Emp emp=empDao.get(uuid);	
-		empDao.delete(emp);
+		emp.setStatus(0);
 		
 	}
 

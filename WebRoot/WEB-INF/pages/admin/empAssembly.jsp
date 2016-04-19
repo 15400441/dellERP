@@ -36,26 +36,25 @@
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
-						<div class="panel panel-yellow">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-shopping-cart fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<div class="huge" id="orderNeedAssemblyCount"></div>
-										<div>Orders need Assemble !</div>
-									</div>
+					<div class="panel panel-yellow">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-shopping-cart fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge" id="orderNeedAssemblyCount"></div>
+									<div>Orders need Assemble !</div>
 								</div>
 							</div>
-							<a href="${pageContext.request.contextPath}/sOrder/orderList.do?status=1&empUuid=${loginEmp.uuid}">
-								<div class="panel-footer">
-									<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i>
-									</span>
-									<div class="clearfix"></div>
-								</div> </a>
 						</div>
+						<a href="${pageContext.request.contextPath}/sOrder/orderList.do?status=1&empUuid=${loginEmp.uuid}">
+							<div class="panel-footer">
+								<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i> </span>
+								<div class="clearfix"></div>
+							</div> </a>
 					</div>
+				</div>
 				<div class="row">
 					<div class="col-lg-4 col-md-6">
 						<div class="panel panel-green">
@@ -70,94 +69,85 @@
 									</div>
 								</div>
 							</div>
-							<a  onclik="changeClass()" href="${pageContext.request.contextPath}/sOrder/orderList.do?status=2&empUuid=${loginEmp.uuid}">
+							<a onclik="changeClass()" href="${pageContext.request.contextPath}/sOrder/orderList.do?status=2&empUuid=${loginEmp.uuid}">
 								<div class="panel-footer">
-									<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i>
-									</span>
+									<span class="pull-left">View Details</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i> </span>
 									<div class="clearfix"></div>
 								</div> </a>
 						</div>
 					</div>
-					
 				</div>
 				<!-- /.row -->
-				
 				<div id="showControl1" class="show">
-				<div class="row">
-					<div class="col-lg-10">
-						<h2>Orders need Assemble</h2>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th>Order num</th>
-										<th>Start Time</th>
-										<th>Total price</th>
-										<th>Components needed</th>
-										<th>Description</th>
-										<th>Status</th>
-										<th>Finish task</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${page.records}" var="o">
+					<div class="row">
+						<div class="col-lg-10">
+							<h2>Orders need Assemble</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
 										<tr>
-											<td>${o.orderNum }</td>
-											<td>${o.startTime }</td>
-											<td>${o.totalPrice }</td>
-											<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a>
-											</td>
-											<td>${o.des }</td>
-											<td>${o.statusView }</td>
-											<td><a href="${pageContext.request.contextPath}/emp/changeSorderStatus?uuid=${o.uuid}&status=2">finish</a>
-											</td>
+											<th>Order num</th>
+											<th>Start Time</th>
+											<th>Total price</th>
+											<th>Components needed</th>
+											<th>Description</th>
+											<th>Status</th>
+											<th>Finish task</th>
 										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<c:forEach items="${page.records}" var="o">
+											<tr>
+												<td>${o.orderNum }</td>
+												<td>${o.startTime }</td>
+												<td>${o.totalPrice }</td>
+												<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a></td>
+												<td>${o.des }</td>
+												<td>${o.statusView }</td>
+												<td><a href="${pageContext.request.contextPath}/emp/changeSorderStatus?uuid=${o.uuid}&status=2">finish</a></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-				</div>
 				<!-- /.row -->
-				
 				<div id="showControl2" class="hidden">
-				<div class="row">
-					<div class="col-lg-10">
-						<h2>finished assembley orders</h2>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
-									<tr>
-										<th>Order num</th>
-										<th>Start Time</th>
-										<th>Total price</th>
-										<th>Components needed</th>
-										<th>Description</th>
-										<th>status</th>
-										
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${page.records}" var="o">
+					<div class="row">
+						<div class="col-lg-10">
+							<h2>finished assembley orders</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
 										<tr>
-											<td>${o.orderNum }</td>
-											<td>${o.startTime }</td>
-											<td>${o.totalPrice }</td>
-											<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a>
-											</td>
-											<td>${o.des }</td>
-											<td>${o.statusView }</td>										
+											<th>Order num</th>
+											<th>Start Time</th>
+											<th>Total price</th>
+											<th>Components needed</th>
+											<th>Description</th>
+											<th>status</th>
 										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<c:forEach items="${page.records}" var="o">
+											<tr>
+												<td>${o.orderNum }</td>
+												<td>${o.startTime }</td>
+												<td>${o.totalPrice }</td>
+												<td><a href="${pageContext.request.contextPath}/sOrder/getDetail?uuid=${o.uuid}">Detail</a></td>
+												<td>${o.des }</td>
+												<td>${o.statusView }</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-				</div>
 				<!-- /.row -->
-				
 				<form action="${pageContext.request.contextPath}/sOrder/orderList.do" id="searchForm">
 					<input name="status" type="hidden" value="1"> <input name="empUuid" type="hidden" value="${loginEmp.uuid }"> <input name="pageNum" id="pageNum" type="hidden" value="${page.currentPageNum }"> <input id="totalPages" type="hidden" value="${page.totalPageSize }">
 				</form>

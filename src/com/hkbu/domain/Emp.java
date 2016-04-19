@@ -37,6 +37,7 @@ public class Emp implements java.io.Serializable
 	private String lastLoginIp;
 	private Integer loginTimes;
     private String genderView;
+    private Integer status;
 	// Constructors
 
 	/** default constructor */
@@ -270,6 +271,17 @@ public class Emp implements java.io.Serializable
 	public String getGenderView()
 	{
 		return genderView;
+	}
+
+	public Integer getStatus()
+	{
+		return status;
+	}
+
+	@Column(name = "status")
+	public void setStatus(Integer status)
+	{
+		this.status = status;
 	}
 
 	

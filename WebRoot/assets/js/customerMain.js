@@ -17,7 +17,7 @@ $.get("/dellERP/components/getComponentsByTypeId?uuid=1", function(data)
 		data : data,
 		pagination : true,
 		pageNum : 1,
-		pageSize : 3
+		pageSize : 4
 
 	});
 
@@ -34,7 +34,7 @@ function findComponents(id)
 					data : data,
 					pagination : true,
 					pageNum : 1,
-					pageSize : 3
+					pageSize : 4
 				});
 
 			});

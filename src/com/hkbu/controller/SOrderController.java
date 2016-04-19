@@ -31,6 +31,8 @@ public class SOrderController
 	public String orderList(Integer status, Long empUuid, Model model, Integer pageNum, HttpSession session)
 	{
 		String role = (String) session.getAttribute("role");
+		if(role==null)
+			return "redirect:/ui/empLoginUI.do";
 		if (null == pageNum)
 			pageNum = 1;
 		if (null == status)
